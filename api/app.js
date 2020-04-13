@@ -7,16 +7,17 @@ var session = require('express-session');
 var cors = require("cors");
 
 
-var indexRouter = require('./routes/index');
+// var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var cafeRouter = require('./routes/cafe');
+// var cafeRouter = require('./routes/cafe');
 
 const port = 3001
 
-console.log("S???")
-
 var app = express();
 app.use(cors());
+
+app.use(express.static(path.join(__dirname, 'client/build')));
+
 
 
 // view engine setup
@@ -29,9 +30,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
+// app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/cafe', cafeRouter);
+// app.use('/cafe', cafeRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
