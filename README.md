@@ -21,12 +21,7 @@ npm i nodemon -g
 git clone https://github.com/yenniejun/internetcafe.git
 ```
 
-2. Enable CORS ([Cross-Origin Resource Sharing](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)) to allow cross-origin requests
-```
-npm install --save cors
-```
-
-3. Open one Terminal window to install the server dependencies and run the Express backend. 
+2. Open one Terminal window to install the server dependencies and run the Express backend. 
 
 ```
 cd api
@@ -36,7 +31,7 @@ npm start
 
 The server will be running on `localhost:3001`
 
-4. Open a separate Terminal window to install the client dependencies and run the React frontend.
+3. Open a separate Terminal window to install the client dependencies and run the React frontend.
 ```
 cd client
 npm install
@@ -45,7 +40,7 @@ npm start
 
 The client will be running on `localhost:3000`
 
-5. Navigate to `localhost:3000` on a browser to see the app running. You can make API calls to `localhost:3001`.
+4. Navigate to `localhost:3000` on a browser to see the app running. You can make API calls to `localhost:3001`.
 
 
 # Built With
