@@ -9,6 +9,13 @@ To Do
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 ## Prerequisites
+
+Install [node.js](https://nodejs.org/en/download/package-manager)
+```
+brew install node
+```
+
+Install nodemon
 ```
 npm i nodemon -g
 ```
