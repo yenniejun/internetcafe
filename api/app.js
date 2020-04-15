@@ -20,8 +20,6 @@ const origin = {
   origin: isProduction ? 'https://virtualcoffeeshop.herokuapp.com' : '*',
 }
 
-const cors = require('cors');
-
 app.use(cors(origin))
 
 app.use(express.static(path.join(__dirname, 'client/build')));

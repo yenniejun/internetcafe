@@ -21,7 +21,7 @@
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
     "morgan": "~1.9.1",
-    "pg": "^8.0.2",
+    "pg": "7.4.3",
     "react-icons": "^3.9.0"
   },
   "devDependencies": {
