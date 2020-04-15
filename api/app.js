@@ -5,7 +5,6 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('express-session');
-var cors = require("cors");
 
 
 var indexRouter = require('./routes/index');
@@ -15,10 +14,13 @@ var cafeRouter = require('./routes/cafe');
 var app = express();
 
 
+var cors = require("cors");
 const isProduction = process.env.NODE_ENV === 'production'
 const origin = {
   origin: isProduction ? 'https://virtualcoffeeshop.herokuapp.com' : '*',
 }
+
+const cors = require('cors');
 
 app.use(cors(origin))
 
