@@ -1,5 +1,6 @@
 var createError = require('http-errors');
 var express = require('express');
+const bodyParser = require('body-parser')
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -7,9 +8,9 @@ var session = require('express-session');
 var cors = require("cors");
 
 
-// var indexRouter = require('./routes/index');
+var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-// var cafeRouter = require('./routes/cafe');
+var cafeRouter = require('./routes/cafe');
 
 const port = 3001
 
@@ -30,9 +31,16 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// app.use('/', indexRouter);
-app.use('/users', usersRouter);
-// app.use('/cafe', cafeRouter);
+app.use(bodyParser.json())
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+)
+
+app.use('/api', indexRouter);
+app.use('/api/users', usersRouter);
+app.use('/api/cafe', cafeRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

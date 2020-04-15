@@ -4,7 +4,6 @@ import './App.css';
 import Login from './pages/Login';
 import Cafe from './pages/Cafe';
 
-
 class App extends Component {
   render() {
     const App = () => (
