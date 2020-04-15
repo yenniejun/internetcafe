@@ -12,7 +12,14 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var cafeRouter = require('./routes/cafe');
 
-const port = 3001
+
+const isProduction = process.env.NODE_ENV === 'production'
+const origin = {
+  origin: isProduction ? 'https://virtualcoffeeshop.herokuapp.com' : '*',
+}
+
+app.use(cors(origin))
+
 
 var app = express();
 app.use(cors());
@@ -58,8 +65,9 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.listen(process.env.PORT || 3001, () => {
-  console.log(`Server listening`)
+const port = process.env.PORT || 3001
+app.listen(port, () => {
+  console.log(`Server listening at ${port}`)
 })
 
 

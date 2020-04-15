@@ -3,6 +3,7 @@ const { pool } = require('./../config')
 const getCafes = (request, response) => {
   pool.query('SELECT * FROM cafe ORDER BY id ASC', (error, results) => {
     if (error) {
+      console.log(error)
       throw error
     }
     response.status(200).json(results.rows)

@@ -33,7 +33,7 @@ git clone https://github.com/yenniejun/internetcafe.git
 ```
 cd api
 npm install
-npm start
+nodemon app.js
 ```
 
 The server will be running on `localhost:3001`
@@ -48,6 +48,18 @@ npm start
 The client will be running on `localhost:3000`
 
 4. Navigate to `localhost:3000` on a browser to see the app running. You can make API calls to `localhost:3001`.
+
+5. Set up the (local) database. Install and start [PostgreSQL](https://www.postgresql.org/download/)
+```
+brew install postgresql
+brew services start postgresql
+```
+
+Login to postgres
+```
+psql postgres
+```
+
 
 
 # Built With
