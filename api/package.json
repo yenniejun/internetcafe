@@ -6,7 +6,8 @@
     "node": "11.x"
   },
   "scripts": {
-    "start": "node ./bin/www",
+    // "start": "node ./bin/www",
+    "start": "node app.js",
     "start:dev": "nodemon app.js",
     "heroku-postbuild": "cd client && npm install && npm run build"
   },
