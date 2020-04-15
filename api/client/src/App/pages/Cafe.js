@@ -9,7 +9,7 @@ class Cafe extends Component {
     super(props);
     console.log(this.props.location.state)
     this.state = {
-      cafe_id: this.props.location.state.cafe_id,
+      cafe: this.props.location.state.cafe,
       username: this.props.location.state.username
     };
   }
@@ -17,7 +17,8 @@ class Cafe extends Component {
   render() {
     return (
     <div className="App">
-      <h1>Welcome {this.state.username} to Cafe {this.state.cafe_id}!</h1>
+      <h1>Welcome {this.state.username} to Cafe {this.state.cafe[0].cafename}!</h1>
+      <p>Cafe Id: {this.state.cafe[0].id} | Cafe Location: {this.state.cafe[0].location}</p>
       <Link to={'/'}>
         <h3> Leave the cafe <FaBeer/></h3>
       </Link>

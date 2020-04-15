@@ -4,7 +4,12 @@ import { Link, Redirect } from 'react-router-dom';
 class Login extends Component {
   constructor(props) {
     super(props);
-    this.state = {username: '', cafe_id: '', fireRedirect: false, cafe: ''};
+    this.state = {
+      username: '', 
+      cafe_id: '', 
+      fireRedirect: false,
+      createCafe: false,
+      cafe: ''};
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -14,13 +19,16 @@ class Login extends Component {
     console.log("get cafe")
     const response = await fetch(`/api/cafe/${cafeId}`);
 
-    if (response.status == 404) {
+    if (response.status === 404) {
       alert(`Cafe with ID ${cafeId} does not exist`)
+      return
     }
 
     const body = await response.json();
     if (response.status !== 200) throw Error(body.message);
     
+    console.log(body)
+
     return body;
   };
 
@@ -60,26 +68,34 @@ class Login extends Component {
 
     return (
       <div className="App" >
-        <h1>Enter a cafe</h1>
+        <h1>Internet Cafe</h1>
         <form onSubmit={this.handleSubmit} style={{
           display:'grid', padding:'0.5rem'
         }}>
           <label>
-            Cafe ID:
+            Room ID:
             <input style={{margin:"0.5rem"}} type="text" name="cafe_id" value={this.state.cafe_id} onChange={this.handleChange} />
           </label>
           <label>
-            Name:
+            Display Name:
             <input style={{margin:"0.5rem"}} type="text" name="username" value={this.state.username} onChange={this.handleChange} />
           </label>
           <input type="submit" value="Submit" align="middle" style={{width:"20%",margin:"2rem",padding:"0.5rem"}}/>
         </form>
 
+        <br/>
+        <br/>
+        <Link to={'./Create'}>Create a cafe</Link>
+        <br/>
+        <Link to={'./List'}>List existing cafes</Link>
+
         {fireRedirect && !!this.state.cafe && (
           <Redirect 
           to={{
             pathname: from || './cafe',
-            state: {cafe_id: this.state.cafe_id, username: this.state.username}
+            state: {
+              cafe: this.state.cafe,
+              username: this.state.username}
           }}
           />
         )}
