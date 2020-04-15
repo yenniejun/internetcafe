@@ -60,12 +60,35 @@ Login to postgres
 psql postgres
 ```
 
+Create a user and password and give them create database access.
+
+```
+CREATE ROLE me WITH LOGIN PASSWORD 'password';
+ALTER ROLE me CREATEDB;
+```
+
+Log out of the root user and log in to the newly created user.
+
+```
+\q
+psql -d postgres -U me
+```
+
+Create database and connect to it
+```
+CREATE DATABASE cafe_api;
+\c cafe_api
+```
+
+Create table and insert values by running the script in `init.sql`.
 
 
 # Built With
 * React (create-react-app)
 * Express
 * Heroku
+* PostgreSQL
+
 
 # Deployment
 To Do
