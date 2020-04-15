@@ -12,6 +12,8 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var cafeRouter = require('./routes/cafe');
 
+var app = express();
+
 
 const isProduction = process.env.NODE_ENV === 'production'
 const origin = {
@@ -19,10 +21,6 @@ const origin = {
 }
 
 app.use(cors(origin))
-
-
-var app = express();
-app.use(cors());
 
 app.use(express.static(path.join(__dirname, 'client/build')));
 
