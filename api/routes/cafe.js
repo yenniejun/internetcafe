@@ -4,6 +4,12 @@ var router = express.Router();
 const db = require('./queries')
 
 router.get('/', db.getCafes)
+
+// router.get('/', (req, res) => {
+//   console.log("IN ROUTER")
+//   console.log(db.getCafes);
+// });
+
 router.get('/:id', db.getCafeById)
 router.post('/', db.createCafe)
 

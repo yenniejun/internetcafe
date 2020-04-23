@@ -1,5 +1,13 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
+import socketIOClient from "socket.io-client";
+
+const socketURL =
+  process.env.NODE_ENV === 'production'
+    ? window.location.hostname
+    : 'http://localhost:3001';
+
+var socket = socketIOClient(socketURL);
 
 class Login extends Component {
   constructor(props) {
@@ -9,14 +17,16 @@ class Login extends Component {
       cafe_id: '', 
       fireRedirect: false,
       createCafe: false,
-      cafe: ''};
+      cafe: '',
+      socketId: '',
+      numClients:''
+    };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   async getCafe(cafeId) {
-    console.log("get cafe")
     const response = await fetch(`/api/cafe/${cafeId}`);
 
     if (response.status === 404) {
@@ -27,9 +37,10 @@ class Login extends Component {
     const body = await response.json();
     if (response.status !== 200) throw Error(body.message);
     
-    console.log(body)
-
-    return body;
+    if (response.status === 200) {
+      console.log(body)
+      return body;
+    }
   };
 
   handleChange(event) {
@@ -40,6 +51,30 @@ class Login extends Component {
   }
 
   componentDidUpdate(prevProps) {
+  }
+
+  componentDidMount() {
+    socket.on("roomfull", (msg) => {
+      alert(`Sorry, the cafe ${msg.cafe.cafename} with ID ${msg.cafe.id} is at capacity. Please try again later.`)
+    });
+
+
+    socket.on('me_joined', (emission) => {
+      this.setState({ 
+        socketId: emission.socketId,
+        numClients: emission.numClients
+        })
+    });
+  }
+
+  componentWillUnmount() {
+    socket.off("me_joined");
+    socket.off("roomfull")
+  }
+
+
+  send_socket = () => {
+    socket.emit('cafe_login', {cafe: this.state.cafe, username:this.state.username})
   }
 
   handleSubmit(event) {
@@ -54,10 +89,16 @@ class Login extends Component {
     else {
       this.getCafe(this.state.cafe_id)
         .then(res => {
-          this.setState({ cafe: res })
+          this.setState({ cafe: res[0], fireRedirect: true })
         })
-        .catch(err => console.log("ERROR!", err))
-        .then(this.setState({ fireRedirect: true}));
+        .then(() => {
+          this.send_socket()
+          // console.log("SOCKET", this.state.socketId)
+        })
+        .then(() => {
+          // console.log("Whatever")
+        })
+        .catch(err => console.log("error logging into cafe", err))
     }
 
   }
@@ -89,13 +130,16 @@ class Login extends Component {
         <br/>
         <Link to={'./List'}>List existing cafes</Link>
 
-        {fireRedirect && !!this.state.cafe && (
+        {fireRedirect && !!this.state.cafe && !!this.state.socketId && (
           <Redirect 
           to={{
             pathname: from || './cafe',
             state: {
               cafe: this.state.cafe,
-              username: this.state.username}
+              username: this.state.username,
+              socketId: this.state.socketId,
+              numClients: this.state.numClients
+            }
           }}
           />
         )}
