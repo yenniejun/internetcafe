@@ -1,0 +1,102 @@
+.modal {
+  margin: 0 auto; 
+  width: 30rem;
+  height: 30rem;
+
+  background: #333745;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05), 0px 2px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+}
+
+
+.modal label {
+  text-align: right;
+  padding-right:5rem;
+}
+
+.modal input {
+  height:1.5rem;
+  width:10rem;
+  background: #FFFFFF;
+  border: 1px solid #F4FAFF;
+  box-sizing: border-box;
+  box-shadow: 0px 1px 0px rgba(204, 204, 204, 0.25);
+  border-radius: 5px;
+}
+
+
+.modal-title-container {
+  color:white;
+  padding-top: 1.5rem;
+    margin-top: 3rem;
+}
+
+.modal-title {
+  /* H1 - Header 1 - 36pt Semibold Open Sans */
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 36px;
+  text-align: center;
+}
+
+
+.modal-input-label {
+  /* H4 - Header 4 - 24pt Semibold Open Sans */
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.2rem;
+  line-height: 140.62%;
+  /* identical to box height, or 34px */
+  color: #FFFFFF;
+}
+
+.modal-input-label input {
+	margin:0.5rem
+}
+
+.modal-form {
+ 	display:grid;
+	padding:0.5rem;
+}
+
+.button-login {
+}
+
+.modal-button {
+	font-family: Open Sans;
+	font-style: normal;
+	font-weight: 800;
+	font-size: 1rem;
+	text-align: right !important;
+	padding: 0.5rem 0.5rem 0rem 0.5rem !important;
+	color: #FFFFFF;
+	background: #82A1DC !important;
+	border-radius: 0.3rem !important;
+    margin: 2rem 3rem 0rem auto;
+	width: 8rem !important;
+    height: 2rem !important;
+}
+
+.button-other {
+	background: #82A1DC;
+	border-radius: 0.3rem;
+	width: 8rem;
+    height: 2rem;
+    margin-right: 3rem;
+    margin-left: auto;
+    margin-top:2rem;
+	text-align: right;
+	padding: 0rem 0.5rem 0rem 0.5rem !important;
+
+}
+
+.modal-button-logo {
+    float: left;
+    padding-left: 0.5rem;
+}
+
+.beans-logo {
+	width: 7%;
+}

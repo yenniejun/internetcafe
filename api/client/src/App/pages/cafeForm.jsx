@@ -2,26 +2,29 @@
 
 import React from 'react';
 import './CafeList.css';
+import './Modal.css';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames'
-import { FaBeer } from 'react-icons/fa';
+import ModalButton from './modalButton'
+
 
 
 function CafeForm(props) {
-
   return (
-    <div className="cafe-form">
-      	<h1>Create a cafe</h1>
-    	<form onSubmit={props.handleSubmit}>
-          <label>
+    <div className="modal">
+      <div className="modal-title-container">
+        <h1 className="modal-title">Create a cafe</h1>
+        </div>
+    	<form class="modal-form" onSubmit={props.handleSubmit}>
+          <label class="modal-input-label">
             Cafe Name:
             <input type="text" name="cafe_name" value={props.cafe_name} onChange={props.handleChange} />
           </label>
-          <label>
+          <label class="modal-input-label">
             Cafe Location:
-            <input type="text" name="cafe_location" value={props.cafe_location} onChange={props.handleChange} />
+            <input class="input-text" type="text" name="cafe_location" value={props.cafe_location} onChange={props.handleChange} />
           </label>
-          <label>
+          <label class="modal-input-label">
             Capacity:
             <input  type="number" name="cafe_capacity" value={props.cafe_capacity} onChange={props.handleChange} />
           </label>
@@ -30,16 +33,16 @@ function CafeForm(props) {
             <input style={{margin:"0.5rem"}} type="checkbox" name="is_private" value={this.state.is_private} onChange={this.handleChange} />
           </label>*/}
           <input className="create-button" type="submit" value="Create" align="middle"/>
+          
         </form>
 
         {
           props.post_id && 
           <h2>Your new cafe ID is {props.post_id}</h2>
-        }
+        }           
 
-		<Link to={'/'}>
-			<h3>Return to login page <FaBeer/></h3>
-		</Link>
+      <ModalButton text={"Return to Login"} to={'/'}/>
+
     </div>
   );
 }

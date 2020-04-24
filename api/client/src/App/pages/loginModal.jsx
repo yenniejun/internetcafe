@@ -1,6 +1,6 @@
 import React from 'react';
-import './LoginModal.css';
-import LoginButton from './loginButton'
+import './Modal.css';
+import ModalButton from './modalButton'
 import classNames from 'classnames';
 import beansLogo from './../img/espresso-beans.png';
 
@@ -8,27 +8,23 @@ import beansLogo from './../img/espresso-beans.png';
 function LoginModal(props) {
 	return (
 	    <div class="modal">
-	    	<div className="login-title-container">
-    	      	
- 	       		<h1 className="login-title"><img class="beanslogo" src={beansLogo} alt="espresso beans logo" /> Internet Cafe</h1>
+	    	<div className="modal-title-container">
+ 	       		<h1 className="modal-title"><img className="beans-logo" src={beansLogo} alt="espresso beans logo" /> Internet Cafe</h1>
        		</div>
 
-
-       		<form onSubmit={props.handleSubmit} style={{
-	          display:'grid', padding:'0.5rem'
-	        }}>
-	          <label class="input-text">
+       		<form class="modal-form" onSubmit={props.handleSubmit}>
+	          	<label class="modal-input-label">
 	            Room ID:
-	            <input style={{margin:"0.5rem"}} type="text" name="cafe_id" value={props.cafe.cafe_id} onChange={props.handleChange} />
-	          </label>
-	          <label class="input-text">
-	            Display Name:
-	            <input style={{margin:"0.5rem"}} type="text" name="username" value={props.cafe.username} onChange={props.handleChange} />
-	          </label>
-	          <input className={classNames("button-login","button-text")} type="submit" value="Find a seat" align="middle" style={{width:"20%",margin:"2rem",padding:"0.5rem"}}/>
+          			<input type="text" name="cafe_id" value={props.cafe.cafe_id} onChange={props.handleChange} />
+	          	</label>
+	          	<label class="modal-input-label">
+	         		Display Name:
+	            	<input type="text" name="username" value={props.cafe.username} onChange={props.handleChange} />
+	          	</label>
+	          	<input className={classNames("modal-button", "modal-input-label")} type="submit" value="Find a seat" align="middle"/>
 	        </form>
-	    	<LoginButton text="Create cafe" to={'./Create'}/>
-	    	<LoginButton text="List cafes" to={'./List'}/>
+	    	<ModalButton text="Create cafe" to={'./Create'} showLogo={true}/>
+	    	<ModalButton text="List cafes" to={'./List'} showLogo={true}/>
 	    </div>
   );
 }
