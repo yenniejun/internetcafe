@@ -1,3 +1,7 @@
+body {
+	background-image: url(./../img/cafe_background.png);
+}
+
 .modal {
 	margin: 0 auto;	
 	width: 30rem;
@@ -8,6 +12,12 @@
 	border-radius: 10px;
 }
 
+.login-title-container {
+	color:white;
+	padding-top: 1.5rem;
+    margin-top: 3rem;
+}
+
 .login-title {
 	/* H1 - Header 1 - 36pt Semibold Open Sans */
 	font-family: Open Sans;
@@ -15,8 +25,6 @@
 	font-weight: 600;
 	font-size: 36px;
 	text-align: center;
-	padding-top: 3rem !important;
-    margin-top: 3rem !important;
 }
 
 .input-text{
@@ -81,3 +89,10 @@
 	border-radius: 5px;
 }
 
+.beanslogo {
+	width:2rem;
+}
+
+.cuplogo {
+	
+}

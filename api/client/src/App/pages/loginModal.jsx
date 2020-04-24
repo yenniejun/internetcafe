@@ -2,13 +2,18 @@ import React from 'react';
 import './LoginModal.css';
 import LoginButton from './loginButton'
 import classNames from 'classnames';
+import beansLogo from './../img/espresso-beans.png';
+
 
 function LoginModal(props) {
 	return (
 	    <div class="modal">
-	    	<div className="login-title>" style={{color:"white", paddingTop:"3rem", marginTop:"3rem"}}>
- 	       		<h1>Internet Cafe</h1>
+	    	<div className="login-title-container">
+    	      	
+ 	       		<h1 className="login-title"><img class="beanslogo" src={beansLogo} alt="espresso beans logo" /> Internet Cafe</h1>
        		</div>
+
+
        		<form onSubmit={props.handleSubmit} style={{
 	          display:'grid', padding:'0.5rem'
 	        }}>
