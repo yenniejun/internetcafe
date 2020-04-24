@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { FaBeer } from 'react-icons/fa';
 import CafeListTable from './cafeListTable'
+import ModalButton from './modalButton'
 import './CafeList.css';
 
 
@@ -36,15 +37,19 @@ class CafeList extends Component {
 
   render() {
     return (
-    <div className="cafeList">
-      <h1 className="cafeListTitle">Existing cafes</h1>
+    <div className="modal">
+      <div className="modal-title-container">
+        <h1 className="modal-title">Existing Cafes</h1>
+      </div>
+      <div className="modal-table">
         {
           !!this.state.cafes && this.state.cafes.length > 0 && 
             <CafeListTable cafes={this.state.cafes} />
         }
-      <Link to={'/'}>
-        <h3 className="backToLogin">Return to login page <FaBeer/></h3>
-      </Link>
+      </div>
+
+      <ModalButton text={"Return to Login"} to={'/'}/>
+
     </div>
     );
   }

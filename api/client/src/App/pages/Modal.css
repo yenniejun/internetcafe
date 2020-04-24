@@ -26,9 +26,9 @@
 
 
 .modal-title-container {
-  color:white;
-  padding-top: 1.5rem;
-    margin-top: 3rem;
+  	color:white;
+  	padding-top: 1.5rem;
+	margin-top: 3rem;
 }
 
 .modal-title {
@@ -90,6 +90,10 @@
 	text-align: right;
 	padding: 0rem 0.5rem 0rem 0.5rem !important;
 
+}
+
+.modal-table {
+	margin:1rem;
 }
 
 .modal-button-logo {

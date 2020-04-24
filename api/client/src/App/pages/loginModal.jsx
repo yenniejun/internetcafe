@@ -24,7 +24,7 @@ function LoginModal(props) {
 	          	<input className={classNames("modal-button", "modal-input-label")} type="submit" value="Find a seat" align="middle"/>
 	        </form>
 	    	<ModalButton text="Create cafe" to={'./Create'} showLogo={true}/>
-	    	<ModalButton text="List cafes" to={'./List'} showLogo={true}/>
+	    	<ModalButton text="Find a cafe" to={'./List'} showLogo={true}/>
 	    </div>
   );
 }

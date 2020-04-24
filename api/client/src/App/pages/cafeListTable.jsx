@@ -1,38 +1,37 @@
 import React from 'react';
 import './CafeList.css';
-import { Link } from 'react-router-dom';
+import './Modal.css';
 import classNames from 'classnames';
+
+
+function renderTableHeader(tableHeaders) {
+	return tableHeaders.map((key, index) => {
+	   return <th key={index}>{key.toUpperCase()}</th>
+	});
+}
+
+function renderTableData(cafes) {
+  return cafes.map((cafe, index) => {
+     const { id, cafename, location, capacity } = cafe
+     return (
+        <tr key={id}>
+           <td>{id}</td>
+           <td>{cafename}</td>
+           <td>{location}</td>
+           <td>{capacity}</td>
+        </tr>
+     )
+  })
+}
 
 function CafeListTable(props) {
 
-	const tablebody = props.cafes.map(function (item, i) {
-    	return (
-	        <tr key={item.id}>
-	           <td >{item.id}</td>
-	           <td>{item.cafename}</td>
-	           <td>{item.location}</td>
-	           <td>{item.capacity}</td>
-	           {console.log(item.isprivate)}
-	           <td>{item.isprivate ? "private" : "public"}</td>
-	           <td>{item.created_timestamp}</td>
-	        </tr>
-	      )
-	  });
-
-  return (
-    <table className="list-table">
-     	<thead>
-      	</thead>
+	const tableHeaders = ["id", "name", "location", "capacity"]
+	return (
+    <table className={classNames("list-table")}>
       	<tbody>
-       		<tr>
-				<td style={{}}>Id</td>
-				<td>Name</td>
-				<td>Location</td>
-				<td>Capacity</td>
-				<td>Private?</td>
-				<td>Time created</td>
-			</tr>
-			{tablebody}
+      		<tr>{renderTableHeader(tableHeaders)}</tr>
+      		{renderTableData(props.cafes)}
         </tbody>
 	</table>
   );
