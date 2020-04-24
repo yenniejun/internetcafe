@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import socketIOClient from "socket.io-client";
+import LoginModal from "./loginModal"
 
 const socketURL =
   process.env.NODE_ENV === 'production'
@@ -50,14 +51,10 @@ class Login extends Component {
     });
   }
 
-  componentDidUpdate(prevProps) {
-  }
-
   componentDidMount() {
     socket.on("roomfull", (msg) => {
       alert(`Sorry, the cafe ${msg.cafe.cafename} with ID ${msg.cafe.id} is at capacity. Please try again later.`)
     });
-
 
     socket.on('me_joined', (emission) => {
       this.setState({ 
@@ -71,7 +68,6 @@ class Login extends Component {
     socket.off("me_joined");
     socket.off("roomfull")
   }
-
 
   send_socket = () => {
     socket.emit('cafe_login', {cafe: this.state.cafe, username:this.state.username})
@@ -100,7 +96,6 @@ class Login extends Component {
         })
         .catch(err => console.log("error logging into cafe", err))
     }
-
   }
 
   render() {
@@ -109,27 +104,6 @@ class Login extends Component {
 
     return (
       <div className="App" >
-        <h1>Internet Cafe</h1>
-        <form onSubmit={this.handleSubmit} style={{
-          display:'grid', padding:'0.5rem'
-        }}>
-          <label>
-            Room ID:
-            <input style={{margin:"0.5rem"}} type="text" name="cafe_id" value={this.state.cafe_id} onChange={this.handleChange} />
-          </label>
-          <label>
-            Display Name:
-            <input style={{margin:"0.5rem"}} type="text" name="username" value={this.state.username} onChange={this.handleChange} />
-          </label>
-          <input type="submit" value="Submit" align="middle" style={{width:"20%",margin:"2rem",padding:"0.5rem"}}/>
-        </form>
-
-        <br/>
-        <br/>
-        <Link to={'./Create'}>Create a cafe</Link>
-        <br/>
-        <Link to={'./List'}>List existing cafes</Link>
-
         {fireRedirect && !!this.state.cafe && !!this.state.socketId && (
           <Redirect 
           to={{
@@ -143,7 +117,12 @@ class Login extends Component {
           }}
           />
         )}
-
+        
+        <LoginModal 
+          cafe={this.state.cafe} 
+          handleSubmit={this.handleSubmit}
+          handleChange={this.handleChange}
+        />
       </div>
     );
   }
