@@ -87,16 +87,18 @@ Create table and insert values by running the script in `init.sql`.
 * React (create-react-app)
 * Express
 * Heroku
+* socket.io
 * PostgreSQL
 
 
 # Deployment
-To Do
-heroku pg:psql postgresql-round-54332 --app virtualcoffeeshop 
+To ensure we do not push the README and other things like that, only push the api sub-folder to heroku.
+```
 git subtree push --prefix api heroku master   
-
+```
 
 
 # TO DO
 * List existing cafes -> button that lets you go to the cafe
+* Make "Logout" into a react component
 * List existing cafes only lists public cafes?
