@@ -92,3 +92,5 @@ Create table and insert values by running the script in `init.sql`.
 
 # Deployment
 To Do
+heroku pg:psql postgresql-round-54332 --app virtualcoffeeshop 
+git subtree push --prefix api heroku master   
