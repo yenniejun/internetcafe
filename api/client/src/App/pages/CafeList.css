@@ -1,0 +1,32 @@
+.cafeList {
+	background: white;
+	padding: 2rem;
+    margin: 2rem;
+}
+
+.cafeListTitle {
+	text-align:center;
+}
+
+
+.list-table {
+	background-color: #FFFFE0;
+	border-collapse: collapse;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+.list-table tr {
+	font-weight:700;
+	border-bottom: 1px solid black;
+}
+
+.list-table td {
+	padding: 0.5rem 1rem 0.5rem;
+}
+
+.backToLogin {
+	margin-top:6rem;
+	text-align:center;
+}
