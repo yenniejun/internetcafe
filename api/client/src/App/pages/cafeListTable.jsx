@@ -21,19 +21,20 @@ function CafeListTable(props) {
 
   return (
     <table className="list-table">
-          <thead></thead>
-            <tbody>
-               <tr>
-                 <td style={{}}>Id</td>
-                 <td>Name</td>
-                 <td>Location</td>
-                 <td>Capacity</td>
-                 <td>Private?</td>
-                 <td>Time created</td>
-              </tr>
-              {tablebody}
-            </tbody>
-          </table>
+     	<thead>
+      	</thead>
+      	<tbody>
+       		<tr>
+				<td style={{}}>Id</td>
+				<td>Name</td>
+				<td>Location</td>
+				<td>Capacity</td>
+				<td>Private?</td>
+				<td>Time created</td>
+			</tr>
+			{tablebody}
+        </tbody>
+	</table>
   );
 }
 

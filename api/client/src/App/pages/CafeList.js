@@ -42,7 +42,6 @@ class CafeList extends Component {
           !!this.state.cafes && this.state.cafes.length > 0 && 
             <CafeListTable cafes={this.state.cafes} />
         }
-
       <Link to={'/'}>
         <h3 className="backToLogin">Return to login page <FaBeer/></h3>
       </Link>
