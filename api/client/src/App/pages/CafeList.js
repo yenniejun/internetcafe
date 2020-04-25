@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import CafeListTable from './cafeListTable'
-import ModalButton from './modalButton'
-import './CafeList.css';
+import CafeListTable from './components/cafeListTable'
+import ModalButton from './components/modalButton'
+import './styles/CafeList.css';
 
 
 class CafeList extends Component {

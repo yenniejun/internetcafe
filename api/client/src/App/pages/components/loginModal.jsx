@@ -1,8 +1,8 @@
 import React from 'react';
-import './Modal.css';
+import './../styles/Modal.css';
 import ModalButton from './modalButton'
 import classNames from 'classnames';
-import beansLogo from './../img/espresso-beans.png';
+import beansLogo from './../../img/espresso-beans.png';
 
 
 function LoginModal(props) {

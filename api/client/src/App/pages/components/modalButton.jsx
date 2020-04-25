@@ -1,8 +1,8 @@
 import React from 'react';
-import './Modal.css';
+import './../styles/Modal.css';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
-import cupLogo from './../img/hot-espresso.png';
+import cupLogo from './../../img/hot-espresso.png';
 
 function ModalButton(props) {
 

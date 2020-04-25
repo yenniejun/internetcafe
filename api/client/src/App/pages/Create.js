@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CafeForm from './cafeForm'
+import CafeForm from './components/cafeForm'
 
 const MAX_CAPACITY = 8;
 const MAX_NAME_LENGTH = 30;

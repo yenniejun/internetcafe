@@ -1,8 +1,8 @@
 // May need to reuse components from login page if it's gonna look the same
 
 import React from 'react';
-import './CafeList.css';
-import './Modal.css';
+import './../styles/CafeList.css';
+import './../styles/Modal.css';
 import ModalButton from './modalButton'
 
 

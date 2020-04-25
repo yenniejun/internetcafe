@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { FaBeer } from 'react-icons/fa';
 import socketIOClient from "socket.io-client";
-import NumClients from "./numClients"
+import NumClients from "./components/numClients"
 
 // TODO: If there is NO CONTEXT (i.e. no props) (i.e. we just load /cafe)
 // then REDIRECT back to to the login page
@@ -67,7 +66,7 @@ class Cafe extends Component {
         }
       
       <Link to={'/'} onClick={this.logout}>
-        <h3> Leave the cafe <FaBeer/></h3>
+        <h3> Leave the cafe</h3>
       </Link>
 
     </div>

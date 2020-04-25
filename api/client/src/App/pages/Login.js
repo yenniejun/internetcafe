@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import socketIOClient from "socket.io-client";
-import LoginModal from "./loginModal"
+import LoginModal from "./components/loginModal"
 
 const socketURL =
   process.env.NODE_ENV === 'production'

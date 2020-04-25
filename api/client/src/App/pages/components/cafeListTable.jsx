@@ -1,6 +1,6 @@
 import React from 'react';
-import './CafeList.css';
-import './Modal.css';
+import './../styles/CafeList.css';
+import './../styles/Modal.css';
 import classNames from 'classnames';
 
 
