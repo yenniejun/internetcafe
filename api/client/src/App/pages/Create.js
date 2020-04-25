@@ -48,7 +48,12 @@ class CreateCafe extends Component {
   handleSubmit(event) {
     event.preventDefault();
     console.log(this.state)
-    this.createCafe()
+    if (!!this.state.cafe_name && !!this.state.cafe_location && !!this.state.cafe_capacity) {
+      this.createCafe()
+    } 
+    else {
+      alert("Please fill out all of the details.")
+    }
   }
 
 
