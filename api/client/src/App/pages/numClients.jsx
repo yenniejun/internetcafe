@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import socketIOClient from "socket.io-client";
 
+
 function NumClients(props) {
-  const [response, setResponse] = useState(props.initial);
+  const [numClients, setNumClients] = useState(props.initial);
+  const [clientsInRoom, setClientsInRoom] = useState(props.clientsInRoom)
+  const [newClient, setNewClient] = useState("")
+  const [byeClient, setByeClient] = useState("")
   
   useEffect(() => {    
     const socketURL =
@@ -13,11 +17,17 @@ function NumClients(props) {
     var socket = socketIOClient(socketURL);
 
     socket.on('joined', (emission) => {
-      setResponse(emission.numClients);
+      setNumClients(emission.numClients);
+      setClientsInRoom(emission.clientsInRoom)
+      setNewClient(emission.newClientName)
     });
 
     socket.on('leaving', (emission) => {
-      setResponse(emission.numClients);
+      if (emission.clientName) {
+        setNumClients(emission.numClients);
+        setClientsInRoom(emission.clientsInRoom)
+        setByeClient(emission.clientName)
+      }
     });
 
     return () => {
@@ -29,7 +39,15 @@ function NumClients(props) {
 
   return (
     <div>
-      Number of people in room {response} / {props.cafe.capacity}
+      <div>
+        Number of people in room {numClients} / {props.cafe.capacity}
+      </div>
+      <div>
+        {clientsInRoom.map((client, key) =>
+          <div key={key}>{client}</div>)}
+      </div>
+      {newClient && (<div>Welcome: {newClient}</div>)}
+      {byeClient && (<div>Bye: {byeClient}</div>)}
     </div>
   );
 }

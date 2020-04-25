@@ -20,7 +20,8 @@ class Login extends Component {
       createCafe: false,
       cafe: '',
       socketId: '',
-      numClients:''
+      numClients:'',
+      clientsInRoom: {}
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -59,7 +60,8 @@ class Login extends Component {
     socket.on('me_joined', (emission) => {
       this.setState({ 
         socketId: emission.socketId,
-        numClients: emission.numClients
+        numClients: emission.numClients,
+        clientsInRoom: emission.clientsInRoom
         })
     });
   }
@@ -70,7 +72,10 @@ class Login extends Component {
   }
 
   send_socket = () => {
-    socket.emit('cafe_login', {cafe: this.state.cafe, username:this.state.username})
+    socket.emit('cafe_login', {
+      cafe: this.state.cafe, 
+      username:this.state.username
+    })
   }
 
   handleSubmit(event) {
@@ -112,7 +117,8 @@ class Login extends Component {
               cafe: this.state.cafe,
               username: this.state.username,
               socketId: this.state.socketId,
-              numClients: this.state.numClients
+              numClients: this.state.numClients,
+              clientsInRoom: this.state.clientsInRoom
             }
           }}
           />

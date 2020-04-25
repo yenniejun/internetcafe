@@ -82,6 +82,7 @@ serve.listen(port, function() {
 });
 
 let roomsList = {}
+let clientToNameMapping = {}
 
 io.on('connection', (client) => {
 
@@ -92,6 +93,9 @@ io.on('connection', (client) => {
     if (!(roomName in roomsList)) {
       roomsList[roomName] = new Set()
     }
+
+    console.log("Adding new clientid", client.id)
+    clientToNameMapping[client.id] = msg.username
 
     capacity = msg.cafe.capacity
     numClients = roomsList[roomName].size
@@ -111,15 +115,16 @@ io.on('connection', (client) => {
      // emit just for each client
       client.emit('me_joined', {
         socketId: client.id,
-        username: msg.username,
-        numClients: roomsList[roomName].size
+        numClients: roomsList[roomName].size,
+        clientsInRoom: Object.values(clientToNameMapping)
       });
 
       // emit for all clients to know
       io.sockets.emit('joined', {
         socketId: client.id,
-        username: msg.username,
-        numClients: roomsList[roomName].size
+        numClients: roomsList[roomName].size,
+        clientsInRoom: Object.values(clientToNameMapping),
+        newClientName: msg.username
       });
     }
 
@@ -140,9 +145,13 @@ io.on('connection', (client) => {
     numClients = roomsList[roomName].size
     roomsList[roomName].delete(msg.socketId)
 
+    delete clientToNameMapping[msg.socketId]
+
     io.sockets.emit('leaving', {
       socketId: client.id,
-      numClients: roomsList[roomName].size
+      clientName: msg.username,
+      numClients: roomsList[roomName].size,
+      clientsInRoom: Object.values(clientToNameMapping),
     });
 
   });
@@ -160,12 +169,18 @@ io.on('connection', (client) => {
       if (roomsList.hasOwnProperty(key)) { 
           console.log(key, roomsList[key]);
         
+          var clientName = clientToNameMapping[client.id]
+          roomsList[key].delete(client.id)
+          delete clientToNameMapping[client.id]
+
           io.sockets.emit('leaving', {
             socketId: client.id,
-            numClients: roomsList[key].size
+            numClients: roomsList[key].size,
+            clientName: clientName,
+            clientsInRoom: Object.values(clientToNameMapping),
           });  
 
-          roomsList[key].delete(client.id)
+
       }
     }
   });

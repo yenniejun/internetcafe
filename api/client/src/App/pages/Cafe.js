@@ -23,7 +23,7 @@ class Cafe extends Component {
       socketId: this.props.location.state.socketId,
       guestNumber: this.props.location.state.numClients,
       numClients:this.props.location.state.numClients,
-      endpoint: 'http://localhost:3001'
+      clientsInRoom: this.props.location.state.clientsInRoom
     };
   }
 
@@ -35,7 +35,11 @@ class Cafe extends Component {
   }
 
   send_socket = () => {
-    socket.emit('cafe_logout', { 'cafe': this.state.cafe, 'socketId': this.state.socketId}) 
+    socket.emit('cafe_logout', { 
+      'cafe': this.state.cafe, 
+      'socketId': this.state.socketId,
+      'username': this.state.username
+    }) 
   }
 
 
@@ -53,7 +57,11 @@ class Cafe extends Component {
               <h1>Welcome {this.state.username} to Cafe {this.state.cafe.cafename}!</h1>
               <p>Cafe Id: {this.state.cafe.id} | Cafe Location: {this.state.cafe.location}</p>
               {/*<p>{this.state.numClients} / {this.state.cafe.capacity}</p>*/}
-              <NumClients cafe={this.state.cafe} initial={this.state.guestNumber}/>
+              <NumClients 
+                cafe={this.state.cafe} 
+                initial={this.state.guestNumber}
+                clientsInRoom={this.state.clientsInRoom}
+              />
             </div>
           )
         }
