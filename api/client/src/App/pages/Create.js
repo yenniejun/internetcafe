@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import CafeForm from './cafeForm'
 
+const MAX_CAPACITY = 8;
+const MAX_NAME_LENGTH = 30;
 
 class CreateCafe extends Component {
 
@@ -38,6 +40,29 @@ class CreateCafe extends Component {
     return response;
   };
 
+  readyToCreate() {
+    console.log("ready to create", this.state)
+    if (!this.state.cafe_name || !this.state.cafe_location || !this.state.cafe_capacity) {
+      alert("Please fill out all of the details.") ;
+      return false;
+    }
+    else if (this.state.cafe_name.length >= MAX_NAME_LENGTH) {
+      alert(`Cafe name must be fewer than ${MAX_NAME_LENGTH} characters.`)
+      return false;
+    }
+    else if (this.state.cafe_location.length >= MAX_NAME_LENGTH) {
+      alert(`Cafe location name must be fewer than ${MAX_NAME_LENGTH} characters.`)
+      return false;
+    } 
+    else if (parseInt(this.state.cafe_capacity) >= MAX_CAPACITY) {
+      alert (`Cafe capacity must be fewer than ${MAX_CAPACITY} people.`)
+      return false;
+    }
+    else {
+      return true;
+    }
+  }
+
   handleChange(event) {
     this.setState({
       ...this.state,
@@ -48,12 +73,9 @@ class CreateCafe extends Component {
   handleSubmit(event) {
     event.preventDefault();
     console.log(this.state)
-    if (!!this.state.cafe_name && !!this.state.cafe_location && !!this.state.cafe_capacity) {
+    if (this.readyToCreate()) {
       this.createCafe()
     } 
-    else {
-      alert("Please fill out all of the details.")
-    }
   }
 
 

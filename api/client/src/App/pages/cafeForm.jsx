@@ -13,16 +13,16 @@ function CafeForm(props) {
       <div className="modal-title-container">
         <h1 className="modal-title">Create a cafe</h1>
         </div>
-    	<form class="modal-form" onSubmit={props.handleSubmit}>
-          <label class="modal-input-label">
+    	<form className="modal-form" onSubmit={props.handleSubmit}>
+          <label className="modal-input-label">
             Cafe Name:
             <input type="text" name="cafe_name" value={props.cafe_name} onChange={props.handleChange} />
           </label>
-          <label class="modal-input-label">
+          <label className="modal-input-label">
             Cafe Location:
-            <input class="input-text" type="text" name="cafe_location" value={props.cafe_location} onChange={props.handleChange} />
+            <input className="input-text" type="text" name="cafe_location" value={props.cafe_location} onChange={props.handleChange} />
           </label>
-          <label class="modal-input-label">
+          <label className="modal-input-label">
             Capacity:
             <input  type="number" name="cafe_capacity" value={props.cafe_capacity} onChange={props.handleChange} />
           </label>
@@ -39,7 +39,7 @@ function CafeForm(props) {
           <h2>Your new cafe ID is {props.post_id}</h2>
         }           
 
-      <ModalButton text={"Return to Login"} to={'/'}/>
+      <ModalButton styles="returnToLoginButton" text={"Return to Login"} to={'/'}/>
 
     </div>
   );
