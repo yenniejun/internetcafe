@@ -157,8 +157,14 @@ io.on('connection', (client) => {
     console.log("Client disconnected")
 
     for (var key in roomsList) {
-      if (roomsList.hasOwnProperty(key)) {           
+      if (roomsList.hasOwnProperty(key)) { 
           console.log(key, roomsList[key]);
+        
+          io.sockets.emit('leaving', {
+            socketId: client.id,
+            numClients: roomsList[key].size
+          });  
+
           roomsList[key].delete(client.id)
       }
     }

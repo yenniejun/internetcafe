@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { FaBeer } from 'react-icons/fa';
 import CafeListTable from './cafeListTable'
 import ModalButton from './modalButton'
 import './CafeList.css';

@@ -24,6 +24,13 @@
   border-radius: 5px;
 }
 
+.modal input[type="text"]
+{
+    font-family: Open Sans;
+    font-style: normal;
+    font-size:1rem;
+}
+
 
 .modal-title-container {
   	color:white;
@@ -61,6 +68,11 @@
 	padding:0.5rem;
 }
 
+.modal-find-seat-button {
+  margin-top:1rem !important;
+  margin-bottom:5rem !important;
+}
+
 .button-login {
 }
 
@@ -69,14 +81,14 @@
 	font-style: normal;
 	font-weight: 800;
 	font-size: 1rem;
-	text-align: right !important;
+	text-align: right;
 	padding: 0.5rem 0.5rem 0rem 0.5rem !important;
 	color: #FFFFFF;
 	background: #82A1DC !important;
 	border-radius: 0.3rem !important;
-    margin: 2rem 3rem 0rem auto;
+  margin: 0.5rem 3rem 0rem auto;
 	width: 8rem !important;
-    height: 2rem !important;
+  height: 2rem !important;
 }
 
 .button-other {
@@ -88,7 +100,7 @@
     margin-left: auto;
     margin-top:2rem;
 	text-align: right;
-	padding: 0rem 0.5rem 0rem 0.5rem !important;
+	padding: 0rem 0.5rem 0rem 0.5rem;
 
 }
 

@@ -3,8 +3,6 @@
 import React from 'react';
 import './CafeList.css';
 import './Modal.css';
-import { Link } from 'react-router-dom';
-import classNames from 'classnames'
 import ModalButton from './modalButton'
 
 
