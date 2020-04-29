@@ -2,7 +2,8 @@ import React from 'react';
 import './../styles/CafeList.css';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
-
+import capacityLogo from './../../img/capacity-icon.png';
+import castleIcon from './../../img/castle-icon.png';
 
 function CafeListPanel(props) {
 
@@ -20,13 +21,15 @@ function CafeListPanel(props) {
 	        }}>
 				<div className="cafeListPanelInnerContainer">
 				    <div className="cafeListCafeIcon">
+				    	<img className="cafe-icon" src={castleIcon} alt="cafe icon" />
 				    </div>
 				    <div>
 						<div className="cafeListCafeName">{props.cafename}</div>
 						<div className="cafeListCafeLocation">{props.location}</div>
 				    </div>
 				    <div className="cafeListCafeCapacity">
-						<span>{props.clientsInRoom.length} / {props.capacity}</span>
+				    	<div><img className="capacity-logo" src={capacityLogo} alt="capacity logo" /></div>
+						<div>{props.clientsInRoom.length}/{props.capacity}</div>
 				    </div>
 				</div>
     		</Link>

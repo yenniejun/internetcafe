@@ -1,5 +1,5 @@
 .modal {
-  margin: 10rem auto; 
+  margin: 7rem auto; 
   width: 30rem;
 
   background: #333745;
@@ -35,6 +35,15 @@
   	color:white;
   	padding-top: 1.5rem;
 	  margin-top: 3rem;
+    display:flex;
+}
+
+.modal-title-container a {
+  margin: auto;
+}
+
+.modal-title-cafelist {
+  margin-right:5rem !important;
 }
 
 .modal-title {
@@ -44,6 +53,7 @@
   font-weight: 600;
   font-size: 36px;
   text-align: center;
+  margin:auto;
 }
 
 
@@ -113,5 +123,11 @@
 }
 
 .beans-logo {
-	width: 7%;
+	width: 17%;
+}
+
+.home-icon {
+  max-width: 60%;
+  height:auto;
+  margin-left:0.8rem;
 }

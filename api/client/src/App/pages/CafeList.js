@@ -3,6 +3,10 @@ import CafeListTable from './components/cafeListTable'
 import ModalButton from './components/modalButton'
 import './styles/CafeList.css';
 import socketIOClient from "socket.io-client";
+import homeIcon from './../img/home-button.png';
+import { Link } from 'react-router-dom';
+import classNames from 'classnames';
+
 
 
 const socketURL =
@@ -80,8 +84,9 @@ class CafeList extends Component {
   render() {
     return (
     <div className="modal">
-      <div className="modal-title-container">
-        <h1 className="modal-title">Available Cafes</h1>
+      <div className={classNames("modal-title-container")}>
+        <Link to={'/'}><img className="home-icon" src={homeIcon} alt="home icon" /></Link>
+        <h1 className={classNames("modal-title", "modal-title-cafelist")}>Available Cafes</h1>
       </div>
       <div className="modal-table">
         {
@@ -96,7 +101,6 @@ class CafeList extends Component {
         }
       </div>
 
-      <ModalButton text={"Return to Login"} to={'/'}/>
       <ModalButton text={"Create a Cafe"} to={'./Create'}/>
 
     </div>

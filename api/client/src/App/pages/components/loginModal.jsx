@@ -4,8 +4,6 @@ import ModalButton from './modalButton'
 import classNames from 'classnames';
 import beansLogo from './../../img/espresso-beans.png';
 import cupLogo from './../../img/hot-espresso.png';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
 function LoginModal(props) {
