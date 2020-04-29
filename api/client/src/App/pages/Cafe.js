@@ -5,6 +5,7 @@ import NumClients from "./components/numClients"
 
 // TODO: If there is NO CONTEXT (i.e. no props) (i.e. we just load /cafe)
 // then REDIRECT back to to the login page
+
 const socketURL =
   process.env.NODE_ENV === 'production'
     ? window.location.hostname
@@ -16,20 +17,43 @@ var socket = socketIOClient(socketURL);
 class Cafe extends Component {
   constructor(props) {
     super(props);
+    console.log("CAFE PROPS", props.location.state)
     this.state = {
       cafe: this.props.location.state.cafe,
       username: this.props.location.state.username,
-      socketId: this.props.location.state.socketId,
-      guestNumber: this.props.location.state.numClients,
-      numClients:this.props.location.state.numClients,
-      clientsInRoom: this.props.location.state.clientsInRoom
+      socketId: '',
+      clientsInRoom: this.props.location.state.clientsInRoom,
     };
+
   }
 
   componentDidMount() {
+    this.state.clientsInRoom.push(this.state.username)
+    socket.emit('cafe_login', {
+      cafe: this.state.cafe, 
+      username:this.state.username
+    })
+
+    socket.on('me_joined', (emission) => {
+      this.setState({ 
+        socketId: emission.socketId
+        })
+    });
+
+    if (this.state.clientsInRoom.length >= this.state.cafe.capacity) {
+        alert("ROOMFULL!")
+        this.setState({
+            cafe: undefined
+        })
+        window.location = './'
+
+    }
+
   }
 
   componentWillUnmount() {
+    socket.off("me_joined")
+    socket.off("joined")
     socket.off("cafe_logout")
   }
 
@@ -53,12 +77,10 @@ class Cafe extends Component {
           !!this.state.cafe && 
           (
             <div>
-              <h1>Welcome {this.state.username} to Cafe {this.state.cafe.cafename}!</h1>
+              {/*<h1>Welcome {this.state.username} to Cafe {this.state.cafe.cafename}!</h1>*/}
               <p>Cafe Id: {this.state.cafe.id} | Cafe Location: {this.state.cafe.location}</p>
-              {/*<p>{this.state.numClients} / {this.state.cafe.capacity}</p>*/}
               <NumClients 
                 cafe={this.state.cafe} 
-                initial={this.state.guestNumber}
                 clientsInRoom={this.state.clientsInRoom}
               />
             </div>

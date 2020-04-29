@@ -16,7 +16,8 @@ class Login extends Component {
     this.state = {
       username: '', 
       cafe_id: '', 
-      fireRedirect: false,
+      goToCafe: false,
+      goToCafeList: false,
       createCafe: false,
       cafe: '',
       socketId: '',
@@ -72,53 +73,61 @@ class Login extends Component {
   }
 
   send_socket = () => {
-    socket.emit('cafe_login', {
-      cafe: this.state.cafe, 
-      username:this.state.username
+    socket.emit('cafe_login_with_cafeid', {
+      cafeId: this.state.cafe.id, 
     })
   }
 
   handleSubmit(event) {
     event.preventDefault();
 
-    if (!this.state.cafe_id) {
-      alert('Please include a cafe id');
+    if (!this.state.username) {
+      alert('Please pick a nickname')
     }
-    else if (!this.state.username) {
-      alert('Please include a username')
-    }
-    else {
+
+    else if (this.state.username && this.state.cafe_id) {
       this.getCafe(this.state.cafe_id)
         .then(res => {
-          this.setState({ cafe: res[0], fireRedirect: true })
+          this.setState({ cafe: res[0], goToCafe: true })
         })
         .then(() => {
           this.send_socket()
-          // console.log("SOCKET", this.state.socketId)
-        })
-        .then(() => {
-          // console.log("Whatever")
         })
         .catch(err => console.log("error logging into cafe", err))
+    }
+
+    // Only has username, no cafe ID
+    else if (this.state.username && !this.state.cafe_id) {
+        this.setState({ goToCafeList: true })
     }
   }
 
   render() {
     const { from } = this.props.location.state || '/'
-    const { fireRedirect } = this.state
+    const { goToCafe, goToCafeList } = this.state
 
     return (
       <div className="App" >
-        {fireRedirect && !!this.state.cafe && !!this.state.socketId && (
+        { goToCafe && !!this.state.cafe && !!this.state.socketId && (
           <Redirect 
           to={{
             pathname: from || './cafe',
             state: {
               cafe: this.state.cafe,
               username: this.state.username,
-              socketId: this.state.socketId,
               numClients: this.state.numClients,
               clientsInRoom: this.state.clientsInRoom
+            }
+          }}
+          />
+        )}
+
+        { goToCafeList && (
+          <Redirect 
+          to={{
+            pathname: from || './list',
+            state: {
+              username: this.state.username,
             }
           }}
           />
