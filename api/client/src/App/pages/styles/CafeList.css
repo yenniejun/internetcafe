@@ -1,12 +1,8 @@
 .list-table a {
 	color:black;
-	text-decoration: none
+	text-decoration: none;
 }
 
-
-.list-table a:hover {
-	color:pink;
-}
 
 .list-table tbody {
 	background-color: white;
@@ -23,10 +19,11 @@
 	text-align: center;
 	color:white;
     font-family: Open Sans;
+    width:90%;
 }
 
-.list-table td, th {
-  	padding: 0.5rem;
+.list-table td, th, tr {
+	display: block;
 }
 
 .list-table th {
@@ -34,7 +31,6 @@
 	text-decoration-line: underline;
 	font-weight: bold;
 }
-
 
 /*.list-table tr {
 	font-weight:700;
@@ -76,11 +72,53 @@
 
 ::-webkit-scrollbar {
   -webkit-appearance: none;
-  width: 7px;
+  width: 0.6rem;
 }
 ::-webkit-scrollbar-thumb {
   border-radius: 4px;
   background-color: rgba(0, 0, 0, .5);
   -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
 }
+
+.cafeListPanelContainer {
+    border-style: none none dashed none;
+    border-color: #333745;
+    border-width:1px;
+}
+
+.cafeListPanelContainer div:hover {
+	background-color: #82A1DC;
+	color:#F4FAFF;;
+}
+
+.cafeListPanelInnerContainer {
+	display:flex;
+	justify-content: space-around;
+	margin: 0.2rem;
+	padding:0.4rem;
+	text-align:left;
+}
+
+.cafeListCafeName {
+	font-family: Open Sans;
+	font-style: normal;
+	font-weight: 300;
+	font-size: 1.1rem;
+	line-height: 140.62%;
+	/* identical to box height, or 34px */
+	/* Light Background */
+}
+
+.cafeListCafeLocation {
+	font-family: Open Sans;
+	font-style: normal;
+	font-weight: 300;
+	font-size: 0.8rem;
+	line-height: 140.62%;
+}
+
+
+
+
+
 

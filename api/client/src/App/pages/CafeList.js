@@ -97,6 +97,7 @@ class CafeList extends Component {
       </div>
 
       <ModalButton text={"Return to Login"} to={'/'}/>
+      <ModalButton text={"Create a Cafe"} to={'./Create'}/>
 
     </div>
     );

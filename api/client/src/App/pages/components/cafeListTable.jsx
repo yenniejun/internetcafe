@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './../styles/CafeList.css';
 import './../styles/Modal.css';
 import classNames from 'classnames';
+import CafeListPanel from './cafeListPanel'
 
 
 function renderTableData(props) {
@@ -20,18 +21,16 @@ function renderTableData(props) {
         <tr key={id} >
            <td>
               {clientsInRoom.length < capacity ?
-                <Link to={{
-                    pathname: './cafe',
-                    state: {
-                      cafe: cafe,
-                      username: props.username,
-                      socketId: props.socketId,
-                      numClients:clientsInRoom.length,
-                      clientsInRoom: clientsInRoom,
-                      }
-                    }}>
-                  {cafename}, {location} ... {clientsInRoom.length} / {capacity}
-                </Link> :
+                  <CafeListPanel 
+                    cafename={cafename}
+                    location={location}
+                    capacity={capacity}
+                    username={props.username}
+                    cafe={cafe}
+                    socketId={props.socketId}
+                    clientsInRoom={clientsInRoom}
+                  />
+                :
                 <div>{cafename}, {location} ... Room FULL</div>
               }
               
