@@ -1,5 +1,4 @@
-.list-table a {
-	color:black;
+.list-table {
 	text-decoration: none;
 }
 
@@ -84,6 +83,7 @@
     border-style: none none dashed none;
     border-color: #333745;
     border-width:1px;
+    color:black;
 }
 
 .cafeListPanelContainer div:hover {

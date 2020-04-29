@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import CafeListTable from './components/cafeListTable'
 import ModalButton from './components/modalButton'
+import Popup from './components/popup'
 import './styles/CafeList.css';
 import socketIOClient from "socket.io-client";
 import homeIcon from './../img/home-button.png';
@@ -24,11 +25,35 @@ class CafeList extends Component {
       username: this.props.location.state.username,
       cafeClientList: [],
       clientToNameMapping: {},
-      socketId: ''
+      socketId: '',
+      showPopup: false,
+      'selectedCafe':{},
+      'selectecClientsInRoom':[]
     };
     console.log(this.props.location.state)
+    this.handleClick = this.handleClick.bind(this);
 
   }
+
+  handleChange() {
+
+  }
+
+
+  handleClick(cafe, clientsInRoom) {
+    console.log(cafe)
+    this.setState({
+      selectedCafe: cafe,
+      selectecClientsInRoom: clientsInRoom,
+      showPopup: true 
+    })
+  }
+
+  closePopup() {  
+    this.setState({  
+       showPopup: !this.state.showPopup  
+    });  
+   }  
 
   async getCafes() {
     const response = await fetch(`/api/cafe`);
@@ -81,6 +106,7 @@ class CafeList extends Component {
     }
   }
 
+
   render() {
     return (
     <div className="modal">
@@ -88,6 +114,24 @@ class CafeList extends Component {
         <Link to={'/'}><img className="home-icon" src={homeIcon} alt="home icon" /></Link>
         <h1 className={classNames("modal-title", "modal-title-cafelist")}>Available Cafes</h1>
       </div>
+        {this.state.showPopup ?
+          <Popup  
+            text='Enter Cafe'  
+            closePopup={this.closePopup.bind(this)} 
+            cafename={this.state.selectedCafe.cafename}
+            to={'./cafe'}
+            state={{
+              cafe:this.state.selectedCafe,
+              username:this.state.username,
+              socketId:this.state.socketId,
+              numClients:this.state.selectecClientsInRoom.length,
+              clientsInRoom:this.state.selectecClientsInRoom
+            }}
+          />  
+          : null  
+        }  
+
+
       <div className="modal-table">
         {
           !!this.state.cafes && this.state.cafes.length > 0 && 
@@ -97,6 +141,7 @@ class CafeList extends Component {
               cafeClientList={this.state.cafeClientList}
               socketId={this.state.socketId}
               clientToNameMapping={this.state.clientToNameMapping}
+              onClickHandler={this.handleClick}
             />
         }
       </div>

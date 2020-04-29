@@ -131,3 +131,94 @@
   height:auto;
   margin-left:0.8rem;
 }
+
+.popup {  
+  position: fixed;  
+  top: 0;  
+  left: 0;  
+  right: 0;  
+  bottom: 0;  
+  margin: auto;  
+  background-color: rgba(0,0,0, 0.5);  
+}  
+.popup-inner {  
+  background: #F4FAFF;
+  /* Main Content Drop Shadow */
+
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05), 0px 2px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 2px;
+  height: 15rem;
+  width: 20rem;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+}
+
+.popup-text {
+  text-align:center;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 2rem;
+  line-height: 140.62%;
+  text-align: center;
+  margin-top:2rem;
+  color: #5C5C5C;
+}
+
+
+.popup-cafename {
+  background: #FFFFFF;
+  border: 1px solid #F4FAFF;
+  box-sizing: border-box;
+  /* Separator - Bottom */
+
+  box-shadow: 0px 1px 0px rgba(204, 204, 204, 0.25);
+  border-radius: 5px;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 140.62%;
+  color: #5C5C5C;
+  text-align:center;
+
+  margin:1.5rem;
+}
+
+.popup-button {
+  display:flex;
+  justify-content: space-evenly
+}
+
+.popup-button div {
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05), 0px 2px 4px rgba(0, 0, 0, 0.25);
+  padding:0.5rem;
+  background: #FFA8D2;
+  border-radius: 6px;
+  width: 4rem;
+  height: 1rem;
+  text-align:center;
+
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 15px;
+  line-height: 140.62%;
+  color:white;
+}
+
+.popup-button a {
+  text-decoration: none;
+  color:white;
+}
+
+.popup-button div:first-child {
+  background: #FFA8D2;
+}
+
+.popup-button div:nth-child(2) {
+  background: #82A1DC;
+}
