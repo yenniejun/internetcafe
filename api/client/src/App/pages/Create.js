@@ -1,8 +1,17 @@
 import React, { Component } from 'react';
 import CafeForm from './components/cafeForm'
+import socketIOClient from "socket.io-client";
+
 
 const MAX_CAPACITY = 8;
 const MAX_NAME_LENGTH = 30;
+
+const socketURL =
+  process.env.NODE_ENV === 'production'
+    ? window.location.hostname
+    : 'http://localhost:3001';
+
+var socket = socketIOClient(socketURL);
 
 class CreateCafe extends Component {
 
@@ -11,12 +20,15 @@ class CreateCafe extends Component {
     this.state = {
       'cafe_name':'',
       'cafe_location': '',
-      'cafe_capacity': ''
+      'cafe_capacity': '',
+      'cafeId':'',
+      'socketId':'',
+      'username': this.props.location.state.username,
+      'fireRedirect':false
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    console.log(this.props.location.state)
   }
 
   async createCafe() {
@@ -35,8 +47,8 @@ class CreateCafe extends Component {
     if (response.status !== 201) throw Error(response);
 
     const body = await response.json();
-    
-    this.setState({ postId: body.id })
+
+    this.setState({ cafeId: body.id })
     return response;
   };
 
@@ -70,11 +82,29 @@ class CreateCafe extends Component {
     });
   }
 
+  componentDidMount() {
+    socket.on('me_joined', (emission) => {
+      console.log("ME JOINED", emission.socketId)
+      this.setState({ 
+        socketId: emission.socketId,
+        })
+    });
+  }
+
+  componentWillUnmount() {
+    socket.off("cafe_login_with_cafeid")
+    socket.off("me_joined");
+  }
+
   handleSubmit(event) {
     event.preventDefault();
-    console.log(this.state)
     if (this.readyToCreate()) {
       this.createCafe()
+        .then(() => {
+          socket.emit('cafe_login_with_cafeid', {
+            cafeId: this.state.cafeId, 
+          })
+      })
     } 
   }
 
@@ -87,7 +117,9 @@ class CreateCafe extends Component {
                 cafe_name={this.state.cafe_name}
                 cafe_location={this.state.cafe_location}
                 cafe_capacity={this.state.cafe_capacity}
-                post_id={this.state.postId}
+                cafeId={this.state.cafeId}
+                socketId={this.state.socketId}
+                username={this.state.username}
       />
 
     </div>

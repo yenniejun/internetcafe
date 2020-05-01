@@ -14,8 +14,8 @@
 }
 
 .modal input {
-  height:1.5rem;
-  width:10rem;
+  /*height:1.5rem;*/
+  /*width:10rem;*/
   background: #FFFFFF;
   border: 1px solid #F4FAFF;
   box-sizing: border-box;
@@ -81,8 +81,10 @@
 }
 
 .modal-find-seat-button {
-  margin-top:1rem !important;
-  margin-bottom:5rem !important;
+  margin-top:2rem !important;
+  margin-bottom:2rem !important;
+  padding: 1rem !important;
+  text-align:center !important;
 }
 
 .button-login {

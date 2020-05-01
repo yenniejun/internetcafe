@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 
 function Popup (props) {  
-	console.log("POPUP", props)
+	// console.log("POPUP", props)
 	return (  
 		<div className='popup'>  
 			<div className='popup-inner'>  

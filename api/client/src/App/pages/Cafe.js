@@ -22,7 +22,7 @@ class Cafe extends Component {
       cafe: this.props.location.state.cafe,
       username: this.props.location.state.username,
       socketId: '',
-      clientsInRoom: this.props.location.state.clientsInRoom,
+      clientsInRoom: this.props.location.state.clientsInRoom ?? [],
     };
 
   }
@@ -40,7 +40,7 @@ class Cafe extends Component {
         })
     });
 
-    if (this.state.clientsInRoom.length >= this.state.cafe.capacity) {
+    if (this.state.clientsInRoom.length > this.state.cafe.capacity) {
         alert("ROOMFULL!")
         this.setState({
             cafe: undefined

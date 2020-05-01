@@ -4,10 +4,22 @@ import React from 'react';
 import './../styles/CafeList.css';
 import './../styles/Modal.css';
 import ModalButton from './modalButton'
+import { Redirect } from 'react-router-dom';
+
+function get_cafe(props) {
+  const cafe = {
+    id: props.cafeId,
+    cafename: props.cafe_name,
+    location: props.cafe_location,
+    capacity: props.cafe_capacity
+  }
+  return cafe
+}
 
 
 
 function CafeForm(props) {
+
   return (
     <div className="modal">
       <div className="modal-title-container">
@@ -35,8 +47,18 @@ function CafeForm(props) {
         </form>
 
         {
-          props.post_id && 
-          <h2>Your new cafe ID is {props.post_id}</h2>
+          props.cafeId && 
+            <Redirect 
+              to={{
+                pathname:'./cafe',
+                state: {
+                  cafe: get_cafe(props),
+                  username: props.username,
+                  numClients: 1,
+                  clientsInRoom: []
+                }
+              }}
+            /> 
         }           
 
       <ModalButton styles="returnToLoginButton" text={"Return to Login"} to={'/'}/>

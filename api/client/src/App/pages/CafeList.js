@@ -30,7 +30,7 @@ class CafeList extends Component {
       'selectedCafe':{},
       'selectecClientsInRoom':[]
     };
-    console.log("CAFE LIST", this.props.location.state)
+    // console.log("CAFE LIST", this.props.location.state)
     this.handleClick = this.handleClick.bind(this);
 
   }
