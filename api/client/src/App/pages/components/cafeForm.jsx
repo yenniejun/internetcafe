@@ -1,10 +1,13 @@
 // May need to reuse components from login page if it's gonna look the same
 
 import React from 'react';
-import './../styles/CafeList.css';
 import './../styles/Modal.css';
 import ModalButton from './modalButton'
 import { Redirect } from 'react-router-dom';
+import classNames from 'classnames';
+import { Link } from 'react-router-dom';
+import homeIcon from './../../img/home-button.png';
+
 
 function get_cafe(props) {
   const cafe = {
@@ -16,15 +19,14 @@ function get_cafe(props) {
   return cafe
 }
 
-
-
 function CafeForm(props) {
 
   return (
-    <div className="modal">
-      <div className="modal-title-container">
-        <h1 className="modal-title">Create a cafe</h1>
-        </div>
+    <div className={classNames("modal", "cafe-list-modal")}>
+      <div className={classNames("modal-title-container")}>
+        <Link to={'/'}><img className="home-icon" src={homeIcon} alt="home icon" /></Link>
+        <h1 className={classNames("modal-title", "modal-title-cafelist")}>Create a cafe</h1>
+      </div>
     	<form className="modal-form" onSubmit={props.handleSubmit}>
           <label className="modal-input-label">
             Cafe Name:
@@ -60,8 +62,6 @@ function CafeForm(props) {
               }}
             /> 
         }           
-
-      <ModalButton styles="returnToLoginButton" text={"Return to Login"} to={'/'}/>
 
     </div>
   );

@@ -152,10 +152,6 @@ hr {
 }
 
 
-.cafe-list-modal {
-	height: 37rem !important;
-	overflow: auto;
-}
 
 .cafe-list-text {
 	text-align: center;
@@ -164,3 +160,8 @@ hr {
     font-size:1.2rem;
 }
 
+
+.cafe-list-modal {
+	height: 37rem !important;
+	overflow: auto;
+}

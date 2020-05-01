@@ -57,10 +57,8 @@ class CafeList extends Component {
 
   async getCafes() {
     const response = await fetch(`/api/cafe`);
-    console.log("STATUS", response.status)
     if (response.status !== 200) throw Error(response);
     const body = await response.json();
-    console.log("get cafes", body)
     return body;
   };
 
