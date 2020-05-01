@@ -72,13 +72,14 @@ class Cafe extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="Cafe" style={{background: "white", padding:"3rem"}}>
         { 
           !!this.state.cafe && 
           (
-            <div>
-              {/*<h1>Welcome {this.state.username} to Cafe {this.state.cafe.cafename}!</h1>*/}
-              <p>Cafe Id: {this.state.cafe.id} | Cafe Location: {this.state.cafe.location}</p>
+            <div >
+              <h1>Welcome <u>{this.state.username}</u> to Cafe {this.state.cafe.cafename}!</h1>
+              <h3>Cafe Id: {this.state.cafe.id}</h3>
+              <h3>Cafe Location: {this.state.cafe.location}</h3>
               <NumClients 
                 cafe={this.state.cafe} 
                 clientsInRoom={this.state.clientsInRoom}
