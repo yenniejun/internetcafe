@@ -7,18 +7,15 @@
 	background-color: white;
   	overflow:scroll;
   	width:100%;
-  	display: block;
-  	height: 200px;
-
 }
 
 .list-table {
 	border-collapse: collapse;
-	margin: 1.5rem;
+	/*margin: 1.5rem;*/
 	text-align: center;
 	color:white;
     font-family: Open Sans;
-    width:90%;
+    width:100%;
 }
 
 .list-table td, th, tr {
@@ -71,12 +68,17 @@
 
 ::-webkit-scrollbar {
   -webkit-appearance: none;
-  width: 0.6rem;
+  width: 1rem;
 }
 ::-webkit-scrollbar-thumb {
   border-radius: 4px;
   background-color: rgba(0, 0, 0, .5);
-  -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+  -webkit-box-shadow: inset 0 0 1px rgba(255, 255, 255, .5);
+}
+::-webkit-scrollbar-track
+{
+    border-radius: 10px;
+    webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
 }
 
 .cafeListPanelContainer {
@@ -141,5 +143,24 @@
 }
 
 
+hr { 
+	display: block; 
+    margin: 1rem 6rem;
+   	overflow: hidden; 
+	border-width: 0.2rem;
+	border-radius:0.5rem;
+}
 
+
+.cafe-list-modal {
+	height: 37rem !important;
+	overflow: auto;
+}
+
+.cafe-list-text {
+	text-align: center;
+	color:white;
+    font-family: Open Sans;
+    font-size:1.2rem;
+}
 

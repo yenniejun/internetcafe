@@ -30,7 +30,7 @@ class CafeList extends Component {
       'selectedCafe':{},
       'selectecClientsInRoom':[]
     };
-    console.log(this.props.location.state)
+    console.log("CAFE LIST", this.props.location.state)
     this.handleClick = this.handleClick.bind(this);
 
   }
@@ -109,7 +109,7 @@ class CafeList extends Component {
 
   render() {
     return (
-    <div className="modal">
+    <div className={classNames("modal", "cafe-list-modal")}>
       <div className={classNames("modal-title-container")}>
         <Link to={'/'}><img className="home-icon" src={homeIcon} alt="home icon" /></Link>
         <h1 className={classNames("modal-title", "modal-title-cafelist")}>Available Cafes</h1>
@@ -146,7 +146,17 @@ class CafeList extends Component {
         }
       </div>
 
-      <ModalButton text={"Create a Cafe"} to={'./Create'}/>
+      <hr/>
+
+      <div className="cafe-list-text">
+        Don't see one you like?
+      </div>
+
+      <ModalButton 
+        text={"+ Create a Cafe"} 
+        to={'./Create'} 
+        username={this.state.username}
+      />
 
     </div>
     );

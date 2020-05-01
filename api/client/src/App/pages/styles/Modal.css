@@ -33,7 +33,6 @@
 
 .modal-title-container {
   	color:white;
-  	padding-top: 1.5rem;
 	  margin-top: 3rem;
     display:flex;
 }
@@ -44,6 +43,10 @@
 
 .modal-title-cafelist {
   margin-right:5rem !important;
+}
+
+.modal-title-home {
+  margin-top: 3rem !important;
 }
 
 .modal-title {
@@ -95,7 +98,8 @@
 	color: #FFFFFF;
 	background: #82A1DC !important;
 	border-radius: 0.3rem !important;
-  margin: 0.5rem 3rem 0rem auto;
+  margin:1rem auto;
+  /*margin: 0.5rem 3rem 0rem auto;*/
 	width: 8rem !important;
   height: 2rem !important;
 }
@@ -114,7 +118,9 @@
 }
 
 .modal-table {
-	margin:1rem;
+	margin:2rem;
+  height:18rem;
+  overflow: auto;
 }
 
 .modal-button-logo {

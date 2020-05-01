@@ -1,6 +1,5 @@
 import React from 'react';
 import './../styles/Modal.css';
-import ModalButton from './modalButton'
 import classNames from 'classnames';
 import beansLogo from './../../img/espresso-beans.png';
 import cupLogo from './../../img/hot-espresso.png';
@@ -10,7 +9,7 @@ function LoginModal(props) {
 	return (
 	    <div className="modal">
 	    	<div className="modal-title-container">
- 	       		<h1 className="modal-title"><img className="beans-logo" src={beansLogo} alt="espresso beans logo" /> Internet Cafe</h1>
+ 	       		<h1 className={classNames("modal-title", "modal-title-home")}><img className="beans-logo" src={beansLogo} alt="espresso beans logo" /> Internet Cafe</h1>
        		</div>
 
        		<form className="modal-form" onSubmit={props.handleSubmit}>
