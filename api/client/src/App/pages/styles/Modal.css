@@ -1,3 +1,57 @@
+
+@media only screen and (min-width: 768px) {
+    /* tablets and desktop */
+
+}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .modal {
+    width: 20rem !important;
+  }
+
+  .modal label {
+    text-align: left !important;
+    margin-left: 1rem;
+  }
+
+  .modal-input-label {
+  }
+
+  .modal input {
+    display:block;
+  }
+
+  .modal-input-label input {
+    margin: 1rem 0 !important;
+  }
+
+  .modal input[type="text"]
+  {
+    margin-top: 0.25rem !important;
+    height: 2rem;
+    width: 13rem;
+  }
+
+  .modal-find-seat-button {
+    height:3rem !important;
+  }
+
+  .modal-table {
+    margin: 0.5rem !important;
+    height:22rem !important;
+  }
+
+  .modal-title-cafelist {
+    font-size: 25px !important;
+    margin-bottom:0.5rem !important;
+    margin-top:2rem !important;
+  }
+
+
+}
+
+
 .modal {
   margin: 7rem auto; 
   width: 30rem;
@@ -122,7 +176,8 @@
 .modal-table {
 	margin:2rem;
   height:18rem;
-  overflow: auto;
+  overflow-y:scroll;
+  overflow-x: hidden;
 }
 
 .modal-button-logo {
@@ -149,6 +204,7 @@
   margin: auto;  
   background-color: rgba(0,0,0, 0.5);  
 }  
+
 .popup-inner {  
   background: #F4FAFF;
   /* Main Content Drop Shadow */
