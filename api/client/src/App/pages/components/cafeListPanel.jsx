@@ -2,16 +2,21 @@ import React from 'react';
 import './../styles/CafeList.css';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
-import capacityLogo from './../../img/capacity-icon.png';
-import castleIcon from './../../img/cafe-icons/castle.svg';
+import capacityLogo from './../../img/capacity-icon.svg';
+// import castleIcon from './../../img/cafe-icons/castle.svg';
+// import icons from './../../img/cafe-icons/cafe13.svg';
+
+import * as icons from './../../img/cafe-icons/';
+
 
 function CafeListPanel(props) {
+	const icon = icons[`Cafe${props.icon}Icon`];
 
 	return (
 		<div className="cafeListPanelContainer">
 			<div className="cafeListPanelInnerContainer">
 			    <div className="cafeListCafeIcon">
-			    	<img className="cafe-icon" src={castleIcon} alt="cafe icon" />
+			    	<img className="cafe-icon" src={icon} alt="cafe icon" />
 			    </div>
 			    <div>
 					<div className="cafeListCafeName">{props.cafename}</div>

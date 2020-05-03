@@ -29,6 +29,7 @@ function renderTableData(props) {
                     cafe={cafe}
                     socketId={props.socketId}
                     clientsInRoom={clientsInRoom}
+                    icon={index % 17}
                   />
                 :
                 <div>{cafename}, {location} ... Room FULL</div>

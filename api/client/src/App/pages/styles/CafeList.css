@@ -146,8 +146,19 @@
 	text-align:center;
 }
 
+
 .cafe-icon {
-	width:80%;
+	background: #F4FAFF;
+    border-radius: 50%;
+	/*color:#F4FAFF;;*/
+	width:3rem;
+	margin-right:1rem;
+    
+}
+
+
+.cafeListCafeCapacity {
+	border-radius: none;
 }
 
 

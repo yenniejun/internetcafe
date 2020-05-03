@@ -161,4 +161,9 @@ class CafeList extends Component {
     );
   }
 }
+
+
+// Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
+// Need to include this somewhere
+
 export default CafeList;
