@@ -113,14 +113,10 @@ class CafeList extends Component {
   render() {
     return (
     <div className={classNames("modal", "cafe-list-modal")}>
+      
       {this.state.redirectHome && 
-          <Redirect 
-          to={{
-            pathname: './',
-          }}
-          />
+        <Redirect to={'/'}/>
       }
-
 
       <div className={classNames("modal-title-container")}>
         <Link to={'/'}><img className="home-icon" src={homeIcon} alt="home icon" /></Link>
