@@ -24,3 +24,4 @@ export { default as Cafe21Icon } from './cafe21.svg';
 export { default as Cafe22Icon } from './cafe22.svg';
 export { default as Cafe23Icon } from './cafe23.svg';
 export { default as Cafe24Icon } from './cafe24.svg';
+export { default as Cafe25Icon } from './cafe25.svg';
