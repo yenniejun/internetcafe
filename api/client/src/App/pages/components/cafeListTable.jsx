@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './../styles/CafeList.css';
 import './../styles/Modal.css';
 import classNames from 'classnames';
 import CafeListPanel from './cafeListPanel'
