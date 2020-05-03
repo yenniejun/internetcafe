@@ -88,7 +88,12 @@ class Cafe extends Component {
           )
         }
       
-      <Link to={'/'} onClick={this.logout}>
+      <Link to={{
+            pathname: './list',
+            state: {
+              username: this.state.username,
+            }
+          }} onClick={this.logout}>
         <h3> Leave the cafe</h3>
       </Link>
 

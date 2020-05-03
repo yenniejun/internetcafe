@@ -2,11 +2,11 @@
 
 import React from 'react';
 import './../styles/Main.css';
-import ModalButton from './modalButton'
 import { Redirect } from 'react-router-dom';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 import homeIcon from './../../img/home-button.png';
+
 
 
 function get_cafe(props) {
@@ -22,7 +22,7 @@ function get_cafe(props) {
 function CafeForm(props) {
 
   return (
-    <div className={classNames("modal", "cafe-list-modal")}>
+    <div className={classNames("modal")}>
       <div className={classNames("modal-title-container")}>
         <Link to={'/'}><img className="home-icon" src={homeIcon} alt="home icon" /></Link>
         <h1 className={classNames("modal-title", "modal-title-cafelist")}>Create a cafe</h1>
@@ -44,7 +44,7 @@ function CafeForm(props) {
             Is Private:
             <input style={{margin:"0.5rem"}} type="checkbox" name="is_private" value={this.state.is_private} onChange={this.handleChange} />
           </label>*/}
-          <input className="create-button" type="submit" value="Create" align="middle"/>
+          <input className={classNames("modal-button", "create-button")} type="submit" value="Enter" align="middle"/>
           
         </form>
 

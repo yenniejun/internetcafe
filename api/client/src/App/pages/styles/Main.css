@@ -15,31 +15,34 @@
     margin-left: 1rem;
   }
 
-  .modal-input-label {
-  }
-
-  .modal input {
-    display:block;
-  }
 
   .modal-input-label input {
     margin: 1rem 0 !important;
   }
 
-  .modal input[type="text"]
+  .modal input
   {
+    display:block;
     margin-top: 0.25rem !important;
-    height: 2rem;
-    width: 13rem;
+    height: 2.3rem !important;
   }
 
-  .modal-find-seat-button {
-    height:3rem !important;
+  .modal input[type="text"]
+  {
+    width: 13rem !important;
+  }
+  .modal input[type="number"]
+  {
+    width: 13rem !important;
   }
 
   .modal-table {
     margin: 0.5rem !important;
-    height:22rem !important;
+    height:25rem !important;
+  }
+
+  .cafe-list-modal {
+    height:40rem !important;
   }
 
   .modal-title-cafelist {
@@ -47,7 +50,6 @@
     margin-bottom:0.5rem !important;
     margin-top:2rem !important;
   }
-
 
 }
 
@@ -68,8 +70,8 @@
 }
 
 .modal input {
-  /*height:1.5rem;*/
-  /*width:10rem;*/
+  height:1.5rem;
+  width:10rem;
   background: #FFFFFF;
   border: 1px solid #F4FAFF;
   box-sizing: border-box;
@@ -136,12 +138,6 @@
 	padding:0.5rem;
 }
 
-.modal-find-seat-button {
-  margin-top:2rem !important;
-  margin-bottom:2rem !important;
-  padding: 1rem !important;
-  text-align:center !important;
-}
 
 .button-login {
 }
@@ -151,15 +147,14 @@
 	font-style: normal;
 	font-weight: 800;
 	font-size: 1rem;
-	text-align: right;
-	padding: 0.5rem 0.5rem 0rem 0.5rem !important;
+	text-align: center;
 	color: #FFFFFF;
 	background: #82A1DC !important;
 	border-radius: 0.3rem !important;
   margin:1rem auto;
-  /*margin: 0.5rem 3rem 0rem auto;*/
 	width: 8rem !important;
   height: 2rem !important;
+  padding:0.3rem;
 }
 
 .button-other {
@@ -357,12 +352,8 @@
 }
 
 .create-button {
-  border-radius: 0.3rem !important;
-  /*margin-left: auto !important;*/
-  /*margin-right: auto !important;*/
-  margin: 2rem auto 2rem auto !important;
-  width: 8rem !important;
-    height: 2rem !important;
+  text-align: center;
+  padding:0.3rem;
 }
 
 ::-webkit-scrollbar {
@@ -500,7 +491,7 @@ hr {
 
 
 .cafe-list-modal {
-  height: 35rem !important;
+  height: 35rem;
   margin-top: 3rem !important;
   margin-bottom: auto;
 }
