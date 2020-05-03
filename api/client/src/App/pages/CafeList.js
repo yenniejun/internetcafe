@@ -72,6 +72,7 @@ class CafeList extends Component {
 
     this.getCafes()
       .then(cafes => this.setState({cafes: cafes}))
+      .catch(error => this.setState({redirectHome: true}))
 
     socket.on('capacity', (emission) => {
         this.setState({
