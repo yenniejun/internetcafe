@@ -1,3 +1,4 @@
+export { default as CapacityIcon } from './capacity-icon.svg';
 export { default as Cafe0Icon } from './cafe0.svg';
 export { default as Cafe1Icon } from './cafe1.svg';
 export { default as Cafe2Icon } from './cafe2.svg';
@@ -15,3 +16,11 @@ export { default as Cafe13Icon } from './cafe13.svg';
 export { default as Cafe14Icon } from './cafe14.svg';
 export { default as Cafe15Icon } from './cafe15.svg';
 export { default as Cafe16Icon } from './cafe16.svg';
+export { default as Cafe17Icon } from './cafe17.svg';
+export { default as Cafe18Icon } from './cafe18.svg';
+export { default as Cafe19Icon } from './cafe19.svg';
+export { default as Cafe20Icon } from './cafe20.svg';
+export { default as Cafe21Icon } from './cafe21.svg';
+export { default as Cafe22Icon } from './cafe22.svg';
+export { default as Cafe23Icon } from './cafe23.svg';
+export { default as Cafe24Icon } from './cafe24.svg';
