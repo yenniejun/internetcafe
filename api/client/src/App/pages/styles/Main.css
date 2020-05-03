@@ -1,14 +1,33 @@
 
 @media only screen and (min-width: 768px) {
     /* tablets and desktop */
+  .cafe-list-modal {
+    height:50rem !important;
+    width:30rem !important;    
+  }
+
+  .modal-table{
+    width:27rem !important;
+    height:35rem !important;
+
+  }
+
+  .cafeListPanelContainer {
+    width:25rem !important;
+  }
+
+  .popup-inner {
+    top:40% !important;
+  }
 
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   /* For mobile phones: */
   .modal {
     width: 20rem !important;
-    height:40rem;
+    height:80%;
+    margin: 3rem auto !important;
   }
 
   .modal label {
@@ -43,19 +62,17 @@
   }
 
   .cafe-list-modal {
-    /*margin: 0 0 0 0 !important;*/
-    /*height:40rem !important;*/
-  }
-
-  .modal {
-    /*margin: 0 !important;*/
-    /*height:90%;*/
+    height:80%;
   }
 
   .modal-title-cafelist {
     font-size: 25px !important;
     margin-bottom:0.5rem !important;
     margin-top:2rem !important;
+  }
+
+  .cafeListPanelContainer {
+    width: 18rem;
   }
 
 }
@@ -291,15 +308,6 @@
   background: #82A1DC;
 }
 
-@media only screen and (max-width: 768px) {
-  /* For mobile phones: */
-  .cafeListPanelContainer {
-    width: 18rem;
-  }
-
-
-}
-
 .list-table {
   text-decoration: none;
 }
@@ -498,7 +506,7 @@ hr {
 
 
 .cafe-list-modal {
-  height: 35rem;
+  height: 36rem;
   margin-top: 3rem;
   margin-bottom: auto;
 }
