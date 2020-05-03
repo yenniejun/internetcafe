@@ -7,6 +7,7 @@ import socketIOClient from "socket.io-client";
 import homeIcon from './../img/home-button.png';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
+import { Redirect } from 'react-router-dom';
 
 
 
@@ -28,7 +29,8 @@ class CafeList extends Component {
       socketId: '',
       showPopup: false,
       'selectedCafe':{},
-      'selectecClientsInRoom':[]
+      'selectecClientsInRoom':[],
+      'redirectHome': false
     };
     // console.log("CAFE LIST", this.props.location.state)
     this.handleClick = this.handleClick.bind(this);
@@ -57,7 +59,10 @@ class CafeList extends Component {
 
   async getCafes() {
     const response = await fetch(`/api/cafe`);
-    if (response.status !== 200) throw Error(response);
+    if (response.status !== 200) {
+      this.setState({redirectHome: true})
+      return;
+    }
     const body = await response.json();
     return body;
   };
@@ -108,6 +113,15 @@ class CafeList extends Component {
   render() {
     return (
     <div className={classNames("modal", "cafe-list-modal")}>
+      {this.state.redirectHome && 
+          <Redirect 
+          to={{
+            pathname: './',
+          }}
+          />
+      }
+
+
       <div className={classNames("modal-title-container")}>
         <Link to={'/'}><img className="home-icon" src={homeIcon} alt="home icon" /></Link>
         <h1 className={classNames("modal-title", "modal-title-cafelist")}>Available Cafes</h1>
