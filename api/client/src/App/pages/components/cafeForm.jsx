@@ -1,7 +1,7 @@
 // May need to reuse components from login page if it's gonna look the same
 
 import React from 'react';
-import './../styles/Modal.css';
+import './../styles/Main.css';
 import ModalButton from './modalButton'
 import { Redirect } from 'react-router-dom';
 import classNames from 'classnames';

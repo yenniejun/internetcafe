@@ -1,5 +1,5 @@
 import React from 'react';
-import './../styles/Modal.css';
+import './../styles/Main.css';
 import classNames from 'classnames';
 import beansLogo from './../../img/espresso-beans.png';
 import cupLogo from './../../img/hot-espresso.png';

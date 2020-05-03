@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import CafeListTable from './components/cafeListTable'
 import ModalButton from './components/modalButton'
 import Popup from './components/popup'
-import './styles/Modal.css';
+import './styles/Main.css';
 import socketIOClient from "socket.io-client";
 import homeIcon from './../img/home-button.png';
 import { Link } from 'react-router-dom';
