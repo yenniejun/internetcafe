@@ -3,7 +3,7 @@ import './../styles/CafeList.css';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 import capacityLogo from './../../img/capacity-icon.png';
-import castleIcon from './../../img/castle-icon.png';
+import castleIcon from './../../img/cafe-icons/castle.svg';
 
 function CafeListPanel(props) {
 
