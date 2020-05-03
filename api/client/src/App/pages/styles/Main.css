@@ -8,6 +8,7 @@
   /* For mobile phones: */
   .modal {
     width: 20rem !important;
+    height:40rem;
   }
 
   .modal label {
@@ -38,11 +39,17 @@
 
   .modal-table {
     margin: 0.5rem !important;
-    height:25rem !important;
+    height:22rem !important;
   }
 
   .cafe-list-modal {
-    height:40rem !important;
+    /*margin: 0 0 0 0 !important;*/
+    /*height:40rem !important;*/
+  }
+
+  .modal {
+    /*margin: 0 !important;*/
+    /*height:90%;*/
   }
 
   .modal-title-cafelist {
@@ -492,7 +499,7 @@ hr {
 
 .cafe-list-modal {
   height: 35rem;
-  margin-top: 3rem !important;
+  margin-top: 3rem;
   margin-bottom: auto;
 }
 
