@@ -9,5 +9,5 @@ CREATE TABLE cafe (
 );
 
 INSERT INTO cafe (cafeName, location, capacity, isPrivate)
-  VALUES ('Hogwarts', 'United Kingdom', 10, TRUE), 
-  		('Stumptown', 'Seattle, WA', 13, FALSE);
+  VALUES ('Hogwarts', 'United Kingdom', 5, TRUE), 
+  		('Stumptown', 'Seattle, WA', 7, FALSE);
