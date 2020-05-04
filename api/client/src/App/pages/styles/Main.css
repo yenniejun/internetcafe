@@ -1,3 +1,6 @@
+body {
+  font-family: Open Sans;
+}
 
 @media only screen and (min-width: 768px) and (max-width:992px){
     /* tablets and desktop */
@@ -105,7 +108,6 @@
 
 .modal input[type="text"]
 {
-    font-family: Open Sans;
     font-style: normal;
     font-size:1rem;
     padding: 0.5rem;
@@ -134,7 +136,6 @@
 
 .modal-title {
   /* H1 - Header 1 - 36pt Semibold Open Sans */
-  font-family: Open Sans;
   font-style: normal;
   font-weight: 600;
   font-size: 36px;
@@ -144,7 +145,6 @@
 
 .modal-input-label {
   /* H4 - Header 4 - 24pt Semibold Open Sans */
-  font-family: Open Sans;
   font-style: normal;
   font-weight: 600;
   font-size: 1.2rem;
@@ -167,7 +167,6 @@
 }
 
 .modal-button {
-	font-family: Open Sans;
 	font-style: normal;
 	font-weight: 800;
 	font-size: 1rem;
@@ -243,7 +242,6 @@
 
 .popup-text {
   text-align:center;
-  font-family: Open Sans;
   font-style: normal;
   font-weight: 600;
   font-size: 2rem;
@@ -262,7 +260,6 @@
 
   box-shadow: 0px 1px 0px rgba(204, 204, 204, 0.25);
   border-radius: 5px;
-  font-family: Open Sans;
   font-style: normal;
   font-weight: 600;
   font-size: 20px;
@@ -286,8 +283,6 @@
   width: 4rem;
   height: 1rem;
   text-align:center;
-
-  font-family: Open Sans;
   font-style: normal;
   font-weight: 800;
   font-size: 15px;
@@ -323,8 +318,7 @@
   /*margin: 1.5rem;*/
   text-align: center;
   color:white;
-    font-family: Open Sans;
-    width:100%;
+  width:100%;
 }
 
 .list-table td, th, tr {
@@ -412,7 +406,6 @@
 }
 
 .cafeListCafeName {
-  font-family: Open Sans;
   font-style: normal;
   font-weight: 300;
   font-size: 1.1rem;
@@ -422,7 +415,6 @@
 }
 
 .cafeListCafeLocation {
-  font-family: Open Sans;
   font-style: normal;
   font-weight: 300;
   font-size: 0.8rem;
@@ -430,7 +422,6 @@
 }
 
 .cafeListCafeCapacity {
-  font-family: Open Sans;
   font-style: normal;
   font-size: 0.8rem;
   align-items:center;
@@ -500,7 +491,6 @@ hr {
 .cafe-list-text {
   text-align: center;
   color:white;
-  font-family: Open Sans;
   font-size:1.2rem;
 }
 
@@ -511,3 +501,23 @@ hr {
   margin-bottom: auto;
 }
 
+.Cafe {
+  /*background: "white"*/
+  /*padding:3rem;*/
+  background-color: #ee5522;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 200 200'%3E%3Cdefs%3E%3ClinearGradient id='a' gradientUnits='userSpaceOnUse' x1='100' y1='33' x2='100' y2='-3'%3E%3Cstop offset='0' stop-color='%23000' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23000' stop-opacity='1'/%3E%3C/linearGradient%3E%3ClinearGradient id='b' gradientUnits='userSpaceOnUse' x1='100' y1='135' x2='100' y2='97'%3E%3Cstop offset='0' stop-color='%23000' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23000' stop-opacity='1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg fill='%23ca481d' fill-opacity='0.6'%3E%3Crect x='100' width='100' height='100'/%3E%3Crect y='100' width='100' height='100'/%3E%3C/g%3E%3Cg fill-opacity='0.5'%3E%3Cpolygon fill='url(%23a)' points='100 30 0 0 200 0'/%3E%3Cpolygon fill='url(%23b)' points='100 100 0 130 0 100 200 100 200 130'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.cafe-view {
+  margin: 0rem 5rem;
+}
+
+.cafe-view h1 {
+  color: white;
+  margin: 0 0 0 0;
+}
+
+.cafe-information {
+  display: inline-grid;
+  background-color: white;
+}

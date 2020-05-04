@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import socketIOClient from "socket.io-client";
-import NumClients from "./components/numClients"
+import CafeView from "./components/cafeView"
 
 // TODO: If there is NO CONTEXT (i.e. no props) (i.e. we just load /cafe)
 // then REDIRECT back to to the login page
@@ -24,7 +23,6 @@ class Cafe extends Component {
       socketId: '',
       clientsInRoom: this.props.location.state.clientsInRoom ?? [],
     };
-
   }
 
   componentDidMount() {
@@ -46,9 +44,7 @@ class Cafe extends Component {
             cafe: undefined
         })
         window.location = './'
-
     }
-
   }
 
   componentWillUnmount() {
@@ -65,38 +61,24 @@ class Cafe extends Component {
     }) 
   }
 
-
   logout = () => {
     this.send_socket()
   }
 
   render() {
     return (
-      <div className="Cafe" style={{background: "white", padding:"3rem"}}>
+      <div className="Cafe">
         { 
           !!this.state.cafe && 
           (
-            <div >
-              <h1>Welcome <u>{this.state.username}</u> to Cafe {this.state.cafe.cafename}!</h1>
-              <h3>Cafe Id: {this.state.cafe.id}</h3>
-              <h3>Cafe Location: {this.state.cafe.location}</h3>
-              <NumClients 
-                cafe={this.state.cafe} 
-                clientsInRoom={this.state.clientsInRoom}
-              />
-            </div>
+            <CafeView
+              username={this.state.username}
+              cafe={this.state.cafe}
+              handleLogout={this.logout}
+              clientsInRoom={this.state.clientsInRoom}
+          />
           )
         }
-      
-      <Link to={{
-            pathname: './list',
-            state: {
-              username: this.state.username,
-            }
-          }} onClick={this.logout}>
-        <h3> Leave the cafe</h3>
-      </Link>
-
     </div>
     );
   }

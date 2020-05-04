@@ -34,13 +34,13 @@ function NumClients(props) {
   }, [props.cafe.id]);
 
   return (
-    <div style={{backgroundColor:"white"}}>
+    <div>
       <div>
         Number of people in room: {clientsInRoom.length} / {props.cafe.capacity}
       </div>
       <div>
         {clientsInRoom.map((client, key) =>
-          <div key={key}>{key+1}: {client}</div>)}
+          <ol key={key}>{key+1}: {client}</ol>)}
       </div>
       {newClient && (<div>Welcome: {newClient}</div>)}
       {byeClient && (<div>Bye: {byeClient}</div>)}
