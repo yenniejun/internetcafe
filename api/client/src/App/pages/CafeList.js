@@ -9,8 +9,6 @@ import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import { Redirect } from 'react-router-dom';
 
-
-
 const socketURL =
   process.env.NODE_ENV === 'production'
     ? window.location.hostname
@@ -32,15 +30,10 @@ class CafeList extends Component {
       'selectecClientsInRoom':[],
       'redirectHome': !this.props?.location?.state?.username
     };
-    // console.log("CAFE LIST", this.props.location.state)
+    console.log("CAFE LIST", this.state)
     this.handleClick = this.handleClick.bind(this);
 
   }
-
-  handleChange() {
-
-  }
-
 
   handleClick(cafe, clientsInRoom) {
     console.log(cafe)
@@ -63,6 +56,7 @@ class CafeList extends Component {
       throw Error;
     }
     const body = await response.json();
+    console.log("cafes", body)
     return body;
   };
 

@@ -5,6 +5,7 @@ import Login from './pages/Login';
 import Cafe from './pages/Cafe';
 import CreateCafe from './pages/Create'
 import CafeList from './pages/CafeList'
+import ErrorPage from './pages/ErrorPage';
 
 class App extends Component {
   render() {
@@ -15,9 +16,11 @@ class App extends Component {
             <Route path='/cafe' component={Cafe}/>
             <Route path='/create' component={CreateCafe}/>
             <Route path='/list' component={CafeList}/>
+           <Route component={ErrorPage}/>
           </Switch>
       </div>
     )
+
     return (
         <BrowserRouter>
           <Switch>
