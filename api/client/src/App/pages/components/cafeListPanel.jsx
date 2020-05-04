@@ -1,7 +1,5 @@
 import React from 'react';
 import './../styles/Main.css';
-import classNames from 'classnames';
-import { Link } from 'react-router-dom';
 import * as icons from './../../img/cafe-icons/';
 
 

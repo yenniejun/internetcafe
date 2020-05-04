@@ -42,8 +42,8 @@ function NumClients(props) {
         {clientsInRoom.map((client, key) =>
           <div key={key}>{key+1}: {client}</div>)}
       </div>
-      {/*newClient && (<div>Welcome: {newClient}</div>)}
-      {byeClient && (<div>Bye: {byeClient}</div>)*/}
+      {newClient && (<div>Welcome: {newClient}</div>)}
+      {byeClient && (<div>Bye: {byeClient}</div>)}
     </div>
   );
 }

@@ -11,7 +11,7 @@ function Popup (props) {
 				<div className="popup-text">{props.text}</div> 
 				<div className="popup-cafename">{props.cafename}</div> 
 				<div className="popup-button">
-					<div onClick={props.closePopup}><a>Go back</a></div>
+					<div onClick={props.closePopup}>Go back</div>
 					<div>
 						<Link to={{
 						pathname: props.to,

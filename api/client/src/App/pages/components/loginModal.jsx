@@ -2,7 +2,7 @@ import React from 'react';
 import './../styles/Main.css';
 import classNames from 'classnames';
 import beansLogo from './../../img/espresso-beans.png';
-import cupLogo from './../../img/hot-espresso.png';
+// import cupLogo from './../../img/hot-espresso.png';
 
 
 function LoginModal(props) {
