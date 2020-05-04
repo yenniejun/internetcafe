@@ -56,8 +56,18 @@ app.use('/api', indexRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/cafe', cafeRouter);
 
+app.get('/*', function(req, res) {
+  console.log("OTHER!!!")
+  res.sendFile(path.join(__dirname, 'client/build'), function(err) {
+    if (err) {
+      res.status(500).send(err)
+    }
+  })
+})
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
+  // res.sendFile(path.resolve('client', 'build', 'index.html'))
   next(createError(404));
 });
 
