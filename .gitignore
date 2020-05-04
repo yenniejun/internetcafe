@@ -2,3 +2,4 @@ commands.sql
 node_modules
 secrets.txt
 .DS_Store
+create_tables_for_tracker.sql

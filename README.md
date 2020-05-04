@@ -92,7 +92,7 @@ Create table and insert values by running the script in `init.sql`.
 
 
 # Deployment
-To ensure we do not push the README and other things like that, only push the api sub-folder to heroku.
+To ensure we deploy from the correct folder, we need to only push the api sub-folder to heroku. Run the following command from the home folder (the one above /api)
 ```
 git subtree push --prefix api heroku master   
 ```

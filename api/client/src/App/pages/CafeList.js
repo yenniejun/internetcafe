@@ -23,14 +23,14 @@ class CafeList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: this.props.location.state.username,
+      username: this.props?.location?.state?.username ?? '',
       cafeClientList: [],
       clientToNameMapping: {},
       socketId: '',
       showPopup: false,
       'selectedCafe':{},
       'selectecClientsInRoom':[],
-      'redirectHome': false
+      'redirectHome': !this.props?.location?.state?.username
     };
     // console.log("CAFE LIST", this.props.location.state)
     this.handleClick = this.handleClick.bind(this);
@@ -60,8 +60,7 @@ class CafeList extends Component {
   async getCafes() {
     const response = await fetch(`/api/cafe`);
     if (response.status !== 200) {
-      this.setState({redirectHome: true})
-      return;
+      throw Error;
     }
     const body = await response.json();
     return body;
@@ -72,7 +71,7 @@ class CafeList extends Component {
 
     this.getCafes()
       .then(cafes => this.setState({cafes: cafes}))
-      .catch(error => this.setState({redirectHome: true}))
+      .catch(err => this.setState({redirectHome: true}))
 
     socket.on('capacity', (emission) => {
         this.setState({
