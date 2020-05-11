@@ -505,6 +505,8 @@ hr {
 }
 
 .cafepage {
+  /*background-image: url("../../img/cafe_background_items.svg");*/
+
   background-image: none !important;
   overflow-y:hidden;
 }
@@ -532,6 +534,17 @@ hr {
   background-color: white;
 }
 
+@keyframes hideshow {
+  0% { opacity: 1; }
+  10% { opacity: 1; }
+  15% { opacity: 0; }
+  100% { opacity: 0; }
+} 
+
+
+.lightbulb {
+  animation: hideshow 1s ease infinite;
+}
 
 #testing {
   animation: x .5s ease alternate 14;

@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import socketIOClient from "socket.io-client";
 import CafeBackground from "./components/cafeBackground"
+import {Teacup} from "./components/cafe-elements/beverages"
+import {Plant1, Plant2, CounterPlant1} from "./components/cafe-elements/plants"
+import {Laptop} from "./components/cafe-elements/workmediums"
+import {CashRegister, EspressoMachine, ShelfMachines, ExtraCups} from "./components/cafe-elements/appliances"
+import {Donut1, Donut2, Cookiejar, Croissants1, Croissants2, Cupcakes} from "./components/cafe-elements/snacks"
 
 // TODO: If there is NO CONTEXT (i.e. no props) (i.e. we just load /cafe)
 // then REDIRECT back to to the login page
@@ -68,16 +73,24 @@ class Cafe extends Component {
 
   render() {
     document.body.classList.add('cafepage');
+
     return (
       <div className="Cafe">
-        <CafeBackground 
+      <CafeBackground 
           username={this.state.username}
           handleLogout={this.logout}
           clientsInRoom={this.state.clientsInRoom}
           cafe={this.state.cafe}
+          behindLightbulb={[ShelfMachines]}
+          extra={[Teacup, Laptop, Plant1, Plant2, CounterPlant1, CashRegister, EspressoMachine, ExtraCups]}
         />
-        <CafeBackground />
-
+        <CafeBackground 
+          extra={[Plant1, Plant2, CounterPlant1]}
+          food={[Donut1, Donut2, Cookiejar, Croissants1, Croissants2, Cupcakes]}
+        />
+        <CafeBackground 
+          extra={[Plant1, Plant2, CounterPlant1]}
+        />
 
         { 
           // !!this.state.cafe && 
