@@ -5,9 +5,7 @@ import './../styles/Main.css';
 import { Redirect } from 'react-router-dom';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
-import homeIcon from './../../img/home-button.png';
-
-
+import * as icons from './../../img/cafe-icons/';
 
 function get_cafe(props) {
   const cafe = {
@@ -21,10 +19,12 @@ function get_cafe(props) {
 
 function CafeForm(props) {
 
+  const icon = icons[`HomeButtonIcon`];
+
   return (
     <div className={classNames("modal")}>
       <div className={classNames("modal-title-container")}>
-        <Link to={'/'}><img className="home-icon" src={homeIcon} alt="home icon" /></Link>
+        <Link to={'/'}><img className="home-icon" src={icon} alt="home icon" /></Link>
         <h1 className={classNames("modal-title", "modal-title-cafelist")}>Create a cafe</h1>
       </div>
     	<form className="modal-form" onSubmit={props.handleSubmit}>

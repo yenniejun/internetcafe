@@ -1,15 +1,15 @@
 import React from 'react';
 import './../styles/Main.css';
 import classNames from 'classnames';
-import beansLogo from './../../img/espresso-beans.png';
-// import cupLogo from './../../img/hot-espresso.png';
-
+import * as icons from './../../img/cafe-icons/';
 
 function LoginModal(props) {
+	const icon = icons[`BeansIcon`];
+
 	return (
 	    <div className="modal">
 	    	<div className="modal-title-container">
- 	       		<h1 className={classNames("modal-title", "modal-title-home")}><img className="beans-logo" src={beansLogo} alt="espresso beans logo" /> Internet Cafe</h1>
+ 	       		<h1 className={classNames("modal-title", "modal-title-home")}><img className="beans-logo" src={icon} alt="espresso beans logo" /> Internet Cafe</h1>
        		</div>
 
        		<form className="modal-form" onSubmit={props.handleSubmit}>

@@ -2,9 +2,10 @@ import React from 'react';
 import './../styles/Main.css';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
-import cupLogo from './../../img/hot-espresso.png';
+import * as icons from './../../img/cafe-icons/';
 
 function ModalButton(props) {
+  const icon = icons[`EspressoCupIcon`];
 
   return (
     <Link style={{ textDecoration: 'none'}} to={{
@@ -15,7 +16,7 @@ function ModalButton(props) {
     }}>
       <div className={classNames("modal-button", props.styles)}>
       	{props.showLogo && (
-      		<img className="modal-button-logo" src={cupLogo} alt="espresso cup logo" />
+      		<img className="modal-button-logo" src={icon} alt="espresso cup logo" />
   		)}
         <span >{props.text}</span>
       </div>

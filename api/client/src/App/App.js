@@ -10,7 +10,7 @@ import ErrorPage from './pages/ErrorPage';
 class App extends Component {
   render() {
     const App = () => (
-      <div>
+      <div className="switchContainer">
           <Switch>
             <Route exact path='/' component={Login}/>
             <Route path='/cafe' component={Cafe}/>

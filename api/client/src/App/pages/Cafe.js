@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import socketIOClient from "socket.io-client";
-import CafeView from "./components/cafeView"
+import CafeBackground from "./components/cafeBackground"
 
 // TODO: If there is NO CONTEXT (i.e. no props) (i.e. we just load /cafe)
 // then REDIRECT back to to the login page
@@ -62,22 +62,34 @@ class Cafe extends Component {
   }
 
   logout = () => {
+    document.body.classList.remove('cafepage'); 
     this.send_socket()
   }
 
   render() {
+    document.body.classList.add('cafepage');
     return (
       <div className="Cafe">
+        <CafeBackground 
+          username={this.state.username}
+          handleLogout={this.logout}
+          clientsInRoom={this.state.clientsInRoom}
+          cafe={this.state.cafe}
+        />
+        <CafeBackground />
+
+
         { 
-          !!this.state.cafe && 
-          (
-            <CafeView
-              username={this.state.username}
-              cafe={this.state.cafe}
-              handleLogout={this.logout}
-              clientsInRoom={this.state.clientsInRoom}
-          />
-          )
+          // !!this.state.cafe && 
+          // (
+          //   <CafeView
+          //     username={this.state.username}
+          //     cafe={this.state.cafe}
+          //     handleLogout={this.logout}
+          //     clientsInRoom={this.state.clientsInRoom}
+          // />
+          // )
+
         }
     </div>
     );

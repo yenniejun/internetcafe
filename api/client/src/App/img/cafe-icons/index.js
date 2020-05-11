@@ -1,4 +1,7 @@
 export { default as CapacityIcon } from './capacity-icon.svg';
+export { default as BeansIcon } from './beans-icon.svg';
+export { default as EspressoCupIcon } from './cup-icon.svg';
+export { default as HomeButtonIcon } from './home-button.svg';
 export { default as Cafe0Icon } from './cafe0.svg';
 export { default as Cafe1Icon } from './cafe1.svg';
 export { default as Cafe2Icon } from './cafe2.svg';
