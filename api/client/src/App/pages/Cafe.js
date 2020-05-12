@@ -30,6 +30,11 @@ class Cafe extends Component {
     };
   }
 
+  componentDidUpdate() {
+    window.onpopstate  = (e) => 
+      this.handleLogout();
+  }
+
   componentDidMount() {
     this.state.clientsInRoom.push(this.state.username)
     socket.emit('cafe_login', {
@@ -66,7 +71,7 @@ class Cafe extends Component {
     }) 
   }
 
-  logout = () => {
+  handleLogout = () => {
     document.body.classList.remove('cafepage'); 
     this.send_socket()
   }
@@ -78,7 +83,7 @@ class Cafe extends Component {
       <div className="Cafe">
       <CafeBackground 
           username={this.state.username}
-          handleLogout={this.logout}
+          handleLogout={this.handleLogout}
           clientsInRoom={this.state.clientsInRoom}
           cafe={this.state.cafe}
           behindLightbulb={[ShelfMachines]}
