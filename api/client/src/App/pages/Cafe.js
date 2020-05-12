@@ -27,6 +27,8 @@ class Cafe extends Component {
       username: this.props.location.state.username,
       socketId: '',
       clientsInRoom: this.props.location.state.clientsInRoom ?? [],
+      windowHeight:window.outerHeight,
+      windowWidth:1440*window.outerHeight/1024
     };
   }
 
@@ -36,6 +38,8 @@ class Cafe extends Component {
   }
 
   componentDidMount() {
+    window.addEventListener("resize", this.updateDimensions.bind(this));
+
     this.state.clientsInRoom.push(this.state.username)
     socket.emit('cafe_login', {
       cafe: this.state.cafe, 
@@ -58,6 +62,8 @@ class Cafe extends Component {
   }
 
   componentWillUnmount() {
+    window.removeEventListener("resize", this.updateDimensions.bind(this));
+
     socket.off("me_joined")
     socket.off("joined")
     socket.off("cafe_logout")
@@ -71,6 +77,19 @@ class Cafe extends Component {
     }) 
   }
 
+  /**
+   * Calculate & Update state of new dimensions
+   */
+  updateDimensions() {
+    console.log("UPDATE dimensions")
+    if (window.outerHeight !== this.state.windowHeight) {
+      this.setState({ 
+        windowHeight:window.outerHeight,
+        windowWidth:1440*window.outerHeight/1024
+      })
+    }
+  }
+
   handleLogout = () => {
     document.body.classList.remove('cafepage'); 
     this.send_socket()
@@ -79,9 +98,14 @@ class Cafe extends Component {
   render() {
     document.body.classList.add('cafepage');
 
+    console.log(window.outerWidth +' x '+ window.outerHeight);
+    console.log("HI", this.state.windowWidth, this.state.windowHeight)
+
     return (
       <div className="Cafe">
       <CafeBackground 
+          height={this.state.windowHeight}
+          width={this.state.windowWidth}
           username={this.state.username}
           handleLogout={this.handleLogout}
           clientsInRoom={this.state.clientsInRoom}
@@ -90,10 +114,14 @@ class Cafe extends Component {
           extra={[Teacup, Laptop, Plant1, Plant2, CounterPlant1, CashRegister, EspressoMachine, ExtraCups]}
         />
         <CafeBackground 
+          height={this.state.windowHeight}
+          width={this.state.windowWidth}
           extra={[Plant1, Plant2, CounterPlant1]}
           food={[Donut1, Donut2, Cookiejar, Croissants1, Croissants2, Cupcakes]}
         />
         <CafeBackground 
+          height={this.state.windowHeight}
+          width={this.state.windowWidth}
           extra={[Plant1, Plant2, CounterPlant1]}
         />
 
