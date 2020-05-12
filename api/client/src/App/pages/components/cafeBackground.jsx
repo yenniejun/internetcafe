@@ -3,14 +3,16 @@ import { Link } from 'react-router-dom';
 
 
 const CafeBackground = (props) => {
-  // console.log(window.outerWidth+' x '+window.outerHeight);
-  var windowWidth=window.outerWidth;
-  var width=windowWidth*0.65;//1440/scaleFactor;
-  var height=1024*width/1440;
+  console.log(window.outerWidth +' x '+ window.outerHeight);
+  var windowHeight=window.outerHeight;
+  var height = windowHeight
+  var width=1440*height/1024;
+
+  var viewBox = [0, 0, 1440, 1024].join(' ')
 
   return (
     <div className="cafe-background-svg">
-      <svg width={width} height={height} viewBox="0 0 1440 1024" preserveAspectRatio="xMidYMid meet" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width={width} height={height} viewBox={viewBox} preserveAspectRatio="xMidYMid meet" fill="none" xmlns="http://www.w3.org/2000/svg">
 		<g className="tabletop" clipPath="url(#clip0)">
 			<rect className="wall" width="1440" height="1024" fill="url(#paint0_linear)"/>
 			<rect x="104" y="75" width="251" height="520" rx="15" fill="#A4A9AD"/>

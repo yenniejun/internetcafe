@@ -520,6 +520,21 @@ hr {
   margin:auto;
 }
 
+.switchContainer {
+    overflow-y:hidden;
+}
+
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.switchContainer::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE and Edge */
+.switchContainer {
+  -ms-overflow-style: none;
+}
+
 .cafe-view {
   margin: 0rem 5rem;
 }
