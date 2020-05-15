@@ -41,6 +41,7 @@ class Cafe extends Component {
     window.addEventListener("resize", this.updateDimensions.bind(this));
 
     this.state.clientsInRoom.push(this.state.username)
+
     socket.emit('cafe_login', {
       cafe: this.state.cafe, 
       username:this.state.username
@@ -51,6 +52,28 @@ class Cafe extends Component {
         socketId: emission.socketId
         })
     });
+
+    socket.on('joined', (emission) => {
+      this.setState({ 
+        clientsInRoom: emission.clientsInRoom
+      })
+      console.log("JOineD", this.state.clientsInRoom)
+      
+      // setNewClient(emission.newClientName)
+    });
+
+    socket.on('leaving', (emission) => {
+      if (emission.clientName) {
+        this.setState({ 
+          clientsInRoom: emission.clientsInRoom
+        })
+
+        console.log("LEavING", this.state.clientsInRoom)
+
+        // setByeClient(emission.clientName)
+      }
+    });
+
 
     if (this.state.clientsInRoom.length > this.state.cafe.capacity) {
         alert("ROOMFULL!")
@@ -67,6 +90,7 @@ class Cafe extends Component {
     socket.off("me_joined")
     socket.off("joined")
     socket.off("cafe_logout")
+    socket.off("leaving");
   }
 
   send_socket = () => {
@@ -81,7 +105,7 @@ class Cafe extends Component {
    * Calculate & Update state of new dimensions
    */
   updateDimensions() {
-    console.log("UPDATE dimensions")
+    // console.log("UPDATE dimensions")
     if (window.outerHeight !== this.state.windowHeight) {
       this.setState({ 
         windowHeight:window.outerHeight,
@@ -98,32 +122,32 @@ class Cafe extends Component {
   render() {
     document.body.classList.add('cafepage');
 
-    console.log(window.outerWidth +' x '+ window.outerHeight);
-    console.log("HI", this.state.windowWidth, this.state.windowHeight)
+    // console.log(window.outerWidth +' x '+ window.outerHeight);
+    // console.log("HI", this.state.windowWidth, this.state.windowHeight)
 
     return (
       <div className="Cafe">
-      <CafeBackground 
-          height={this.state.windowHeight}
-          width={this.state.windowWidth}
-          username={this.state.username}
-          handleLogout={this.handleLogout}
-          clientsInRoom={this.state.clientsInRoom}
-          cafe={this.state.cafe}
-          behindLightbulb={[ShelfMachines]}
-          extra={[Teacup, Laptop, Plant1, Plant2, CounterPlant1, CashRegister, EspressoMachine, ExtraCups]}
-        />
         <CafeBackground 
-          height={this.state.windowHeight}
-          width={this.state.windowWidth}
-          extra={[Plant1, Plant2, CounterPlant1]}
-          food={[Donut1, Donut2, Cookiejar, Croissants1, Croissants2, Cupcakes]}
-        />
-        <CafeBackground 
-          height={this.state.windowHeight}
-          width={this.state.windowWidth}
-          extra={[Plant1, Plant2, CounterPlant1]}
-        />
+            height={this.state.windowHeight}
+            width={this.state.windowWidth}
+            username={this.state.username}
+            handleLogout={this.handleLogout}
+            clientsInRoom={this.state.clientsInRoom}
+            cafe={this.state.cafe}
+            behindLightbulb={[ShelfMachines]}
+            extra={[Teacup, Laptop, Plant1, Plant2, CounterPlant1, CashRegister, EspressoMachine, ExtraCups]}
+          />
+          <CafeBackground 
+            height={this.state.windowHeight}
+            width={this.state.windowWidth}
+            extra={[Plant1, Plant2, CounterPlant1]}
+            food={[Donut1, Donut2, Cookiejar, Croissants1, Croissants2, Cupcakes]}
+          />
+          <CafeBackground 
+            height={this.state.windowHeight}
+            width={this.state.windowWidth}
+            extra={[Plant1, Plant2, CounterPlant1]}
+          />
 
         { 
           // !!this.state.cafe && 

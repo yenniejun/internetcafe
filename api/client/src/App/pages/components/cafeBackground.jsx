@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 
 const CafeBackground = (props) => {
-  console.log("BACKGROUND", props)
   if (!props.width || !props.height) {
 	return null;
   }
@@ -42,7 +41,7 @@ const CafeBackground = (props) => {
 			{!!props.cafe && 
 				<Fragment>
 					<text x="700" y="480" fontFamily="Open Sans" fontSize="36" fill="black" > 
-				        {props.cafe.cafename + " Cafe"}
+				        {props.cafe.cafename }
 				    </text>	
 
 					<text x="700" y="510" fontFamily="Open Sans" fontSize="1.5rem" fill="black" > 
