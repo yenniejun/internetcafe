@@ -59,6 +59,11 @@ body {
     width: 13rem !important;
   }
 
+  .meeple-panel {
+    margin:0 !important;
+    width:4rem !important;
+  }
+
   .modal-table {
     margin: 0.5rem !important;
     height:22rem !important;

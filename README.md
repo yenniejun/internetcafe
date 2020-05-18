@@ -102,3 +102,7 @@ git subtree push --prefix api heroku master
 * List existing cafes -> button that lets you go to the cafe
 * Make "Logout" into a react component
 * List existing cafes only lists public cafes?
+
+
+
+* When you create a cafe, show the popup to enter the cafe before you do
