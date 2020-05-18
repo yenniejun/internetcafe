@@ -490,6 +490,44 @@ hr {
 }
 
 
+.innerAvatarModal {
+  background-color: white;
+  background: #F4FAFF;
+  mix-blend-mode: normal;
+  /* Separator - Bottom */
+
+  box-shadow: 0px 1px 0px rgba(204, 204, 204, 0.25);
+  border-radius: 9px;
+  margin: 0 1.5rem 2rem 1.5rem;
+
+  height:20rem;
+
+  padding:1rem;
+  display: inline-block;
+}
+
+.meeple-panel {
+  display:inline-grid;
+  padding:0.5rem;
+  text-align: center;
+  margin: 0 1rem 1rem 1rem;
+  width: 5.3rem;
+  height: 8rem;
+}
+
+.meeple-panel:hover {
+  background: #82A1DC;
+  border-radius: 12px;
+}
+
+.meeple-panel img{
+  /* position:absolute; */
+  max-height:6rem;
+  width:auto;
+  display:block;
+  /* height: auto; */
+  margin: auto;
+}
 
 .cafe-list-text {
   text-align: center;
@@ -560,9 +598,4 @@ hr {
 .lightbulb {
   animation: hideshow 1s ease infinite;
 }
-
-#testing {
-  animation: x .5s ease alternate 14;
-}
-
 

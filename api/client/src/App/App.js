@@ -4,6 +4,7 @@ import './App.css';
 import Login from './pages/Login';
 import Cafe from './pages/Cafe';
 import CreateCafe from './pages/Create'
+import ChooseAvatar from './pages/ChooseAvatar'
 import CafeList from './pages/CafeList'
 import ErrorPage from './pages/ErrorPage';
 
@@ -14,6 +15,7 @@ class App extends Component {
           <Switch>
             <Route exact path='/' component={Login}/>
             <Route path='/cafe' component={Cafe}/>
+            <Route path='/avatar' component={ChooseAvatar}/>
             <Route path='/create' component={CreateCafe}/>
             <Route path='/list' component={CafeList}/>
            <Route component={ErrorPage}/>

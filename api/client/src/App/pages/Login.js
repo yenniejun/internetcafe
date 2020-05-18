@@ -17,7 +17,7 @@ class Login extends Component {
       username: '', 
       cafe_id: '', 
       goToCafe: false,
-      goToCafeList: false,
+      goToChooseAvatar: false,
       createCafe: false,
       cafe: '',
       socketId: '',
@@ -98,13 +98,13 @@ class Login extends Component {
 
     // Only has username, no cafe ID
     else if (this.state.username && !this.state.cafe_id) {
-        this.setState({ goToCafeList: true })
+        this.setState({ goToChooseAvatar: true })
     }
   }
 
   render() {
     const { from } = this.props.location.state || '/'
-    const { goToCafe, goToCafeList } = this.state
+    const { goToCafe, goToChooseAvatar } = this.state
 
     return (
       <div className="App" >
@@ -122,10 +122,10 @@ class Login extends Component {
           />
         )}
 
-        { goToCafeList && (
+        { goToChooseAvatar && (
           <Redirect 
           to={{
-            pathname: from || './list',
+            pathname: from || './avatar',
             state: {
               username: this.state.username,
             }

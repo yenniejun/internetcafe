@@ -1,5 +1,7 @@
 import React, {Fragment} from 'react';
 import { Link } from 'react-router-dom';
+import {Meeple1, Meeple2, Meeple3, Meeple4, Meeple5, Meeple6}  from "./../components/cafe-elements/avatars"
+// import {ReactComponent as Meeple1} from "./../../img/avatars/meeple1.svg"
 
 
 const CafeBackground = (props) => {
@@ -8,6 +10,8 @@ const CafeBackground = (props) => {
   }
 
   var viewBox = [0, 0, 1440, 1024].join(' ')
+
+
 
   return (
     <div className="cafe-background-svg">
@@ -80,15 +84,13 @@ const CafeBackground = (props) => {
 				<path className="mydesk" d="M82.024 902.266L0 1029H1440L1357.98 902.266C1350.6 890.877 1337.96 884 1324.4 884H115.604C102.038 884 89.3954 890.877 82.024 902.266Z" fill="#975B00" stroke="#603A02" strokeWidth="9"/>
 			}
 
-
-			{!!props.food && 
+			{
+				!!props.food && 
 				<Fragment>
 					<rect x="413" y="318" width="349" height="15" fill="#C69C6D"/>
 					{props.food.map((item, index) => item)}
 				</Fragment>
 			}
-
-
 			
 			<g className="foodglass" opacity="0.5">
 				<path d="M453.77 220H825.913C859.826 220 889.458 242.907 898 275.726V333H382V275.726C390.385 242.937 419.926 220 453.77 220Z" fill="#C9E6FF"/>
@@ -98,7 +100,6 @@ const CafeBackground = (props) => {
 			{!!props.behindLightbulb &&
 				props.behindLightbulb.map((item, index) => item)
 			}
-
 
 			<path d="M553 127C553 124.791 554.791 123 557 123H1298C1300.21 123 1302 124.791 1302 127V127C1302 129.209 1300.21 131 1298 131H557C554.791 131 553 129.209 553 127V127Z" fill="#C69C6D"/>
 			<path d="M617 131H628L626 140H619L617 131Z" fill="#6D5C41"/>
@@ -146,6 +147,20 @@ const CafeBackground = (props) => {
 			}
 
 			{!!props.extra && props.extra.map((item, index) => item)}
+
+			{
+				!!props.friends && 
+					props.friends.map((item, index) => 
+						<Fragment key={"avatar"+Math.random()}>
+							{item=="Meeple1" && <Meeple1 transform={index * 800 + 200}/>}
+							{item=="Meeple2" && <Meeple2 transform={index * 800 + 200}/>}
+							{item=="Meeple3" && <Meeple3 transform={index * 800 + 200}/>}
+							{item=="Meeple4" && <Meeple4 transform={index * 800 + 200}/>}
+							{item=="Meeple5" && <Meeple5 transform={index * 800 + 200}/>}
+							{item=="Meeple6" && <Meeple6 transform={index * 800 + 200}/>}
+						</Fragment>
+					)
+			}	
 
 			</g>
 			<defs>

@@ -4,7 +4,7 @@ import ModalButton from './components/modalButton'
 import Popup from './components/popup'
 import './styles/Main.css';
 import socketIOClient from "socket.io-client";
-import homeIcon from './../img/home-button.png';
+import meepleIcon from './../img/cafe-icons/meeple-button.svg';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import { Redirect } from 'react-router-dom';
@@ -22,15 +22,17 @@ class CafeList extends Component {
     super(props);
     this.state = {
       username: this.props?.location?.state?.username ?? '',
+      avatar: this.props?.location?.state?.avatar ?? '',
       cafeClientList: [],
       clientToNameMapping: {},
       socketId: '',
       showPopup: false,
-      'selectedCafe':{},
-      'selectecClientsInRoom':[],
-      'redirectHome': !this.props?.location?.state?.username
+      selectedCafe:{},
+      selectedClientsInRoom:[],
+      redirectHome: !this.props?.location?.state?.username
     };
-    console.log("CAFE LIST", this.state)
+    console.log("cafelist", this.state)
+
     this.handleClick = this.handleClick.bind(this);
 
   }
@@ -113,10 +115,17 @@ class CafeList extends Component {
       }
 
       <div className={classNames("modal-title-container")}>
-        <Link to={'/'}><img className="home-icon" src={homeIcon} alt="home icon" /></Link>
+        <Link to={{
+          pathname: '/avatar',
+          state: {username: this.state.username}
+        }}>
+          <img className="home-icon" src={meepleIcon} alt="meeple icon" />
+        </Link>
+
         <h1 className={classNames("modal-title", "modal-title-cafelist")}>Available Cafes</h1>
       </div>
-        {this.state.showPopup ?
+
+      {this.state.showPopup ?
           <Popup  
             text='Enter Cafe'  
             closePopup={this.closePopup.bind(this)} 

@@ -11,7 +11,8 @@ function ModalButton(props) {
     <Link style={{ textDecoration: 'none'}} to={{
       pathname: props.to,
       state: {
-        username:props.username
+        username:props.username,
+        avatar:props.avatar
       }
     }}>
       <div className={classNames("modal-button", props.styles)}>

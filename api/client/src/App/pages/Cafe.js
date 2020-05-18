@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import socketIOClient from "socket.io-client";
 import CafeBackground from "./components/cafeBackground"
 import {Teacup} from "./components/cafe-elements/beverages"
@@ -6,6 +6,7 @@ import {Plant1, Plant2, CounterPlant1} from "./components/cafe-elements/plants"
 import {Laptop} from "./components/cafe-elements/workmediums"
 import {CashRegister, EspressoMachine, ShelfMachines, ExtraCups} from "./components/cafe-elements/appliances"
 import {Donut1, Donut2, Cookiejar, Croissants1, Croissants2, Cupcakes} from "./components/cafe-elements/snacks"
+// import {ReactComponent as Meeple1} from "./../img/avatars/meeple1.svg"
 
 // TODO: If there is NO CONTEXT (i.e. no props) (i.e. we just load /cafe)
 // then REDIRECT back to to the login page
@@ -25,6 +26,7 @@ class Cafe extends Component {
     this.state = {
       cafe: this.props.location.state.cafe,
       username: this.props.location.state.username,
+      avatar: this.props.location.state.avatar,
       socketId: '',
       clientsInRoom: this.props.location.state.clientsInRoom ?? [],
       windowHeight:window.outerHeight,
@@ -44,7 +46,8 @@ class Cafe extends Component {
 
     socket.emit('cafe_login', {
       cafe: this.state.cafe, 
-      username:this.state.username
+      username:this.state.username,
+      avatar:this.state.avatar
     })
 
     socket.on('me_joined', (emission) => {
@@ -127,6 +130,7 @@ class Cafe extends Component {
 
     return (
       <div className="Cafe">
+
         <CafeBackground 
             height={this.state.windowHeight}
             width={this.state.windowWidth}
@@ -136,18 +140,23 @@ class Cafe extends Component {
             cafe={this.state.cafe}
             behindLightbulb={[ShelfMachines]}
             extra={[Teacup, Laptop, Plant1, Plant2, CounterPlant1, CashRegister, EspressoMachine, ExtraCups]}
+            friends={["Meeple1", "Meeple2"]}
           />
           <CafeBackground 
             height={this.state.windowHeight}
             width={this.state.windowWidth}
             extra={[Plant1, Plant2, CounterPlant1]}
             food={[Donut1, Donut2, Cookiejar, Croissants1, Croissants2, Cupcakes]}
+            friends={["Meeple3", "Meeple4"]}
           />
           <CafeBackground 
             height={this.state.windowHeight}
             width={this.state.windowWidth}
             extra={[Plant1, Plant2, CounterPlant1]}
+            friends={["Meeple5", "Meeple6"]}
           />
+          
+
 
         { 
           // !!this.state.cafe && 

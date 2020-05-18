@@ -21,7 +21,7 @@ function LoginModal(props) {
 	            Cafe ID:
           			<input type="text" name="cafe_id" placeholder="Optional" value={props.cafe.cafe_id} onChange={props.handleChange} />
 	          	</label>
-          		<input className={classNames("modal-button")} type="submit" value="Grab a seat" align="middle"/>
+          		<input className={classNames("modal-button")} type="submit" value="Continue" align="middle"/>
 	        </form>
 	    </div>
   );
