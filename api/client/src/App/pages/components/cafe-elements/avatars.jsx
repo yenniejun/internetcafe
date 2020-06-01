@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
 export const Meeple1 = (props) =>
 (
@@ -53,6 +53,7 @@ export const Meeple1 = (props) =>
         <path d="M141.507 290.539C141.507 293.682 138.565 296.23 134.936 296.23C131.306 296.23 128.364 293.682 128.364 290.539C128.364 287.397 131.306 284.849 134.936 284.849C138.565 284.849 141.507 287.397 141.507 290.539Z" stroke="black" strokeWidth="5.79138" strokeLinecap="round" strokeLinejoin="round"/>
         <path d="M161.583 217.104L224.798 233.601L212.362 202.669L161.583 217.104Z" fill="#635D63" stroke="black" strokeWidth="6.8937" strokeLinecap="round" strokeLinejoin="round"/>
         <path d="M127.982 218.785L64.9636 236.018L77.0383 204.943L127.982 218.785Z" fill="#635D63" stroke="black" strokeWidth="6.8937" strokeLinecap="round" strokeLinejoin="round"/>
+        <text className="avatarText" transform={"translate(80,480)"}>{props.username}</text>
     </g>
 )
 
@@ -110,7 +111,8 @@ export const Meeple2 = (props) =>
         <path d="M155.219 157.967C151.441 171.195 143.311 175.435 137.061 167.439C135.075 164.898 133.44 161.296 132.32 156.994" stroke="black" strokeWidth="11" strokeLinecap="round" strokeLinejoin="round"/>
         <path d="M34.8518 210.315C30.3668 207.981 29.1982 202.73 31.8275 198.903C34.9095 194.417 41.815 193.253 46.8418 195.9C52.7063 198.988 54.2242 205.88 50.7425 210.891C46.6981 216.712 37.7047 218.214 31.1727 214.738C23.616 210.717 21.6723 201.807 26.2086 195.342C31.4362 187.892 42.983 185.981 51.352 190.477C60.9611 195.638 63.419 207.003 57.5928 215.233C56.476 216.81 55.0939 218.242 53.5074 219.475" fill="#A79151"/>
         <path d="M34.8518 210.315C30.3668 207.981 29.1982 202.73 31.8275 198.903C34.9095 194.417 41.815 193.253 46.8418 195.9C52.7063 198.988 54.2242 205.88 50.7425 210.891C46.6981 216.712 37.7047 218.214 31.1727 214.738C23.616 210.717 21.6723 201.807 26.2086 195.342C31.4362 187.892 42.983 185.981 51.352 190.477C60.9611 195.638 63.419 207.003 57.5928 215.233C56.476 216.81 55.0939 218.242 53.5074 219.475" stroke="black" strokeWidth="9.00007" strokeLinecap="round" strokeLinejoin="round"/>
-    </g>
+        <text className="avatarText" transform={"translate(80,480)"}>{props.username}</text>
+</g>
 )
 
 export const Meeple3 = (props) => 
@@ -186,7 +188,8 @@ export const Meeple3 = (props) =>
         <path d="M139.433 163.246L158.804 163.882" stroke="black" strokeWidth="4.23714" strokeLinecap="round" strokeLinejoin="round"/>
         <path d="M108.51 130.745C108.51 134.421 105.532 137.401 101.854 137.401C98.1776 137.401 95.1971 134.421 95.1971 130.745C95.1971 127.069 98.1776 124.087 101.854 124.087C105.532 124.087 108.51 127.069 108.51 130.745Z" fill="black"/>
         <path d="M191.92 129.242C191.92 132.918 188.942 135.898 185.264 135.898C181.588 135.898 178.607 132.918 178.607 129.242C178.607 125.566 181.588 122.584 185.264 122.584C188.942 122.584 191.92 125.566 191.92 129.242Z" fill="black"/>
-    </g>
+        <text className="avatarText" transform={"translate(80,450)"}>{props.username}</text>
+</g>
 )
 
 export const Meeple4 = (props) =>
@@ -222,6 +225,7 @@ export const Meeple4 = (props) =>
         <path d="M190.611 105.212L226.045 104.895" stroke="black" strokeWidth="12.649" strokeLinecap="round" strokeLinejoin="round"/>
         <path d="M142.85 152.67L163.685 155.646" stroke="black" strokeWidth="11" strokeLinecap="round" strokeLinejoin="round"/>
         <path d="M57.915 132.62C54.9138 135.336 49.6062 134.168 46.3647 130.858C41.8989 126.297 42.2642 119.697 46.1073 116.303C48.347 114.325 51.5476 113.467 54.8695 113.793" stroke="black" strokeWidth="9.77691" strokeLinecap="round" strokeLinejoin="round"/>
+        <text className="avatarText" transform={"translate(80,480)"}>{props.username}</text>
     </g>
 )
 
@@ -252,6 +256,7 @@ export const Meeple5 = (props) =>
         <path d="M151.893 436.731C151.893 436.731 152.494 412.605 179.265 411.294C215.277 409.531 219.95 433.031 219.95 433.031C223.161 440.038 151.607 446.597 151.892 436.731H151.893Z" fill="#3F432A" stroke="black" strokeWidth="9.2091"/>
         <path d="M136.376 436.756C136.376 436.756 135.769 413.727 108.779 412.476C72.4719 410.793 67.7605 433.224 67.7605 433.224C64.5236 439.913 136.663 446.173 136.373 436.756L136.376 436.756Z" fill="#3F432A" stroke="black" strokeWidth="9.2091"/>
         <path fillRule="evenodd" clipRule="evenodd" d="M172.422 309.398C166.982 316.398 154.284 302.496 145.45 305.191C136.616 307.886 135.28 326.069 126.426 323.429C117.572 320.79 127.893 305.285 122.401 298.319C116.91 291.354 97.866 295.793 97.8341 287.161C97.8024 278.53 116.878 282.85 122.319 275.85C127.759 268.85 117.326 253.41 126.16 250.715C134.994 248.021 136.463 266.195 145.317 268.834C154.171 271.473 166.766 257.492 172.258 264.458C177.749 271.423 159.582 278.336 159.613 286.967C159.645 295.598 177.863 302.397 172.422 309.397L172.422 309.398Z" fill="#E5C964" stroke="#66665B" strokeWidth="3.63255" strokeLinecap="round" strokeLinejoin="round" strokeDasharray="3.63 7.27"/>
+        <text className="avatarText" transform={"translate(80,480)"}>{props.username}</text>
     </g>
 )
 
@@ -273,5 +278,6 @@ export const Meeple6 = (props) =>
         <path fillRule="evenodd" clipRule="evenodd" d="M163.858 95.2722C166.159 100.259 170.67 103.009 173.933 101.414C177.196 99.8195 177.976 94.4846 175.675 89.498C173.374 84.5114 168.863 81.7617 165.6 83.3561C162.337 84.9507 161.557 90.2856 163.858 95.2722Z" fill="black"/>
         <path d="M180.742 68.9879L160.054 96.0716" stroke="black" strokeWidth="13.3685" strokeLinecap="round" strokeLinejoin="round"/>
         <path d="M124.395 131.722C126.486 123.761 134.204 119.266 141.634 121.681C149.064 124.097 153.392 132.508 151.3 140.469" stroke="black" strokeWidth="10.7857" strokeLinecap="round" strokeLinejoin="round"/>
-    </g>
+        <text className="avatarText" transform={"translate(80,450)"}>{props.username}</text>
+ </g>
 )
