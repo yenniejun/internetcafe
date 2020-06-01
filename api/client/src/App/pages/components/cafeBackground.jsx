@@ -1,17 +1,16 @@
 import React, {Fragment} from 'react';
 import { Link } from 'react-router-dom';
 import {Meeple1, Meeple2, Meeple3, Meeple4, Meeple5, Meeple6}  from "./../components/cafe-elements/avatars"
-// import {ReactComponent as Meeple1} from "./../../img/avatars/meeple1.svg"
-
 
 const CafeBackground = (props) => {
+
+	// console.log("Cafe Background", props.friends)
+
   if (!props.width || !props.height) {
 	return null;
   }
 
   var viewBox = [0, 0, 1440, 1024].join(' ')
-
-
 
   return (
     <div className="cafe-background-svg">
@@ -149,17 +148,20 @@ const CafeBackground = (props) => {
 			{!!props.extra && props.extra.map((item, index) => item)}
 
 			{
-				!!props.friends && 
-					props.friends.map((item, index) => 
-						<Fragment key={"avatar"+Math.random()}>
-							{item=="Meeple1" && <Meeple1 transform={index * 800 + 200}/>}
-							{item=="Meeple2" && <Meeple2 transform={index * 800 + 200}/>}
-							{item=="Meeple3" && <Meeple3 transform={index * 800 + 200}/>}
-							{item=="Meeple4" && <Meeple4 transform={index * 800 + 200}/>}
-							{item=="Meeple5" && <Meeple5 transform={index * 800 + 200}/>}
-							{item=="Meeple6" && <Meeple6 transform={index * 800 + 200}/>}
-						</Fragment>
-					)
+				!!props.friends &&
+					props.friends.map((item, index) => {
+						return (
+							<Fragment key={"avatar"+item['avatar'] + Math.random()}>
+							{item['avatar'] === "Meeple1" && <Meeple1 transform={index*800+200} username={item['username']}/>}
+							{item['avatar'] === "Meeple2" && <Meeple2 transform={index*800+200} username={item['username']}/>}
+							{item['avatar'] === "Meeple3" && <Meeple3 transform={index*800+200} username={item['username']}/>}
+							{item['avatar'] === "Meeple4" && <Meeple4 transform={index*800+200} username={item['username']}/>}
+							{item['avatar'] === "Meeple5" && <Meeple5 transform={index*800+200} username={item['username']}/>}
+							{item['avatar'] === "Meeple6" && <Meeple6 transform={index*800+200} username={item['username']}/>}
+							</Fragment>
+						)
+					}
+				)
 			}	
 
 			</g>
