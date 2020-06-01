@@ -14,9 +14,9 @@ function Popup (props) {
 					<div onClick={props.closePopup}>Go back</div>
 					<div>
 						<Link to={{
-						pathname: props.to,
-						state: props.state
-					}}>
+							pathname: props.to,
+							state: props.state
+						}}>
 						Enter
 						</Link>
 					</div>

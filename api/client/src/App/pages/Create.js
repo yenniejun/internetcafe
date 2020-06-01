@@ -84,7 +84,7 @@ class CreateCafe extends Component {
 
   componentDidMount() {
     socket.on('me_joined', (emission) => {
-      console.log("ME JOINED", emission.socketId)
+      // console.log("ME JOINED", emission.socketId)
       this.setState({ 
         socketId: emission.socketId,
         })

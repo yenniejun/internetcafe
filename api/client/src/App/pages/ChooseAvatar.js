@@ -15,7 +15,7 @@ class ChooseAvatar extends Component {
           avatar: "",
           redirectHome: !this.props?.location?.state?.username
         };
-        console.log("CHOOSE AVATAR",this.state)
+        // console.log("CHOOSE AVATAR",this.state)
         this.handleClick = this.handleClick.bind(this);
         // this.handleSubmit = this.handleSubmit.bind(this);
     }
