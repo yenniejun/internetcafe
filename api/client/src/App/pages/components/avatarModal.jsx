@@ -1,8 +1,6 @@
 import React from 'react';
 import './../styles/Main.css';
-import classNames from 'classnames';
 import * as avatars from './../../img/avatar-pngs/';
-import ModalButton from './modalButton'
 
 const NUM_AVATARS = 6;
 

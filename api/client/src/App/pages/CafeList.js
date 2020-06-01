@@ -31,14 +31,14 @@ class CafeList extends Component {
       selectedClientsInRoom:[],
       redirectHome: !this.props?.location?.state?.username
     };
-    console.log("cafelist", this.state)
+    // console.log("cafelist", this.state)
 
     this.handleClick = this.handleClick.bind(this);
 
   }
 
   handleClick(cafe, clientsInRoom) {
-    console.log(cafe)
+    // console.log(cafe)
     this.setState({
       selectedCafe: cafe,
       selectecClientsInRoom: clientsInRoom,
@@ -58,7 +58,7 @@ class CafeList extends Component {
       throw Error;
     }
     const body = await response.json();
-    console.log("cafes", body)
+    // console.log("cafes", body)
     return body;
   };
 
@@ -136,7 +136,8 @@ class CafeList extends Component {
               username:this.state.username,
               socketId:this.state.socketId,
               numClients:this.state.selectecClientsInRoom.length,
-              clientsInRoom:this.state.selectecClientsInRoom
+              clientsInRoom:this.state.selectecClientsInRoom,
+              avatar:this.state.avatar
             }}
           />  
           : null  

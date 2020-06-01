@@ -133,8 +133,7 @@ io.on('connection', (client) => {
     }
 
     console.log("Adding new clientid", client.id)
-    clientToNameMapping[client.id] = msg.username
-
+    clientToNameMapping[client.id] = {username: msg.username, avatar: msg.avatar}
     capacity = msg.cafe.capacity
     numClients = roomsList[roomName].size
 
@@ -162,7 +161,7 @@ io.on('connection', (client) => {
       io.sockets.emit('joined', {
         socketId: client.id,
         numClients: roomsList[roomName].size,
-        clientsInRoom: Object.values(clientToNameMapping),
+        clientsInRoom: JSON.stringify(Object.values(clientToNameMapping)),
         newClientName: msg.username,
         roomsList: convertRoomsListFromSet()
       });
@@ -192,7 +191,7 @@ io.on('connection', (client) => {
       socketId: client.id,
       clientName: msg.username,
       numClients: roomsList[roomName].size,
-      clientsInRoom: Object.values(clientToNameMapping),
+      clientsInRoom: JSON.stringify(Object.values(clientToNameMapping)),
       roomsList: convertRoomsListFromSet()
     });
 
@@ -219,7 +218,7 @@ io.on('connection', (client) => {
             socketId: client.id,
             numClients: roomsList[key].size,
             clientName: clientName,
-            clientsInRoom: Object.values(clientToNameMapping),
+            clientsInRoom: JSON.stringify(Object.values(clientToNameMapping)),
           });  
 
 

@@ -1,4 +1,5 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import socketIOClient from "socket.io-client";
 import CafeBackground from "./components/cafeBackground"
 import {Teacup} from "./components/cafe-elements/beverages"
@@ -22,7 +23,7 @@ var socket = socketIOClient(socketURL);
 class Cafe extends Component {
   constructor(props) {
     super(props);
-    console.log("CAFE PROPS", props.location.state)
+  // console.log("CAFE PROPS", props.location.state)
     this.state = {
       cafe: this.props.location.state.cafe,
       username: this.props.location.state.username,
@@ -30,7 +31,8 @@ class Cafe extends Component {
       socketId: '',
       clientsInRoom: this.props.location.state.clientsInRoom ?? [],
       windowHeight:window.outerHeight,
-      windowWidth:1440*window.outerHeight/1024
+      windowWidth:1440*window.outerHeight/1024,
+      redirectHome: false
     };
   }
 
@@ -58,22 +60,22 @@ class Cafe extends Component {
 
     socket.on('joined', (emission) => {
       this.setState({ 
-        clientsInRoom: emission.clientsInRoom
+        clientsInRoom: JSON.parse(emission.clientsInRoom)
       })
-      console.log("JOineD", this.state.clientsInRoom)
-      
-      // setNewClient(emission.newClientName)
+      // console.log("JOINEDD", this.state.clientsInRoom, "my name:", this.state.username)
     });
 
     socket.on('leaving', (emission) => {
       if (emission.clientName) {
         this.setState({ 
-          clientsInRoom: emission.clientsInRoom
+          clientsInRoom: JSON.parse(emission.clientsInRoom)
         })
 
-        console.log("LEavING", this.state.clientsInRoom)
-
-        // setByeClient(emission.clientName)
+        if (this.state.clientsInRoom.length === 0) {
+          this.setState({
+            redirectHome: true
+          })
+        }
       }
     });
 
@@ -122,14 +124,26 @@ class Cafe extends Component {
     this.send_socket()
   }
 
+  getFriendsToRender = () => {
+    return this.state.clientsInRoom.filter(x => x.username !== this.state.username)
+  }
+
   render() {
     document.body.classList.add('cafepage');
+
+    const friends = this.getFriendsToRender();
+
+    // console.log("FRIENDS?", friends ?? friends[0]['avatar'])
+    // console.log("My name: ", this.state.username)
+
 
     // console.log(window.outerWidth +' x '+ window.outerHeight);
     // console.log("HI", this.state.windowWidth, this.state.windowHeight)
 
     return (
       <div className="Cafe">
+
+        {this.state.redirectHome && <Redirect to={'/'}/>}
 
         <CafeBackground 
             height={this.state.windowHeight}
@@ -140,20 +154,23 @@ class Cafe extends Component {
             cafe={this.state.cafe}
             behindLightbulb={[ShelfMachines]}
             extra={[Teacup, Laptop, Plant1, Plant2, CounterPlant1, CashRegister, EspressoMachine, ExtraCups]}
-            friends={["Meeple1", "Meeple2"]}
+            friends = {friends ? friends.slice(0,2) : null}
+            // friends={["Meeple1", "Meeple2"]}
           />
           <CafeBackground 
             height={this.state.windowHeight}
             width={this.state.windowWidth}
             extra={[Plant1, Plant2, CounterPlant1]}
             food={[Donut1, Donut2, Cookiejar, Croissants1, Croissants2, Cupcakes]}
-            friends={["Meeple3", "Meeple4"]}
+            friends = {friends ? friends.slice(2,4) : null}
+            // friends={["Meeple3", "Meeple4"]}
           />
           <CafeBackground 
             height={this.state.windowHeight}
             width={this.state.windowWidth}
             extra={[Plant1, Plant2, CounterPlant1]}
-            friends={["Meeple5", "Meeple6"]}
+            friends = {friends ? friends.slice(4,6) : null}
+            // friends={["Meeple5", "Meeple6"]}
           />
           
 
