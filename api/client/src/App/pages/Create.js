@@ -3,7 +3,7 @@ import CafeForm from './components/cafeForm'
 import socketIOClient from "socket.io-client";
 
 
-const MAX_CAPACITY = 8;
+const MAX_CAPACITY = 6;
 const MAX_NAME_LENGTH = 30;
 
 const socketURL =
