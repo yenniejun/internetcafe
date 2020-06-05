@@ -29,8 +29,12 @@ body {
   /* For mobile phones: */
   .modal {
     width: 20rem !important;
-    height:80%;
-    margin: 3rem auto !important;
+    /* height:80%; */
+    margin: auto auto !important;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 
   .modal label {
@@ -81,10 +85,6 @@ body {
 
   .cafeListPanelContainer {
     width: 18rem;
-  }
-
-  .cafebackground {
-    background-size: cover !important;
   }
 }
 
