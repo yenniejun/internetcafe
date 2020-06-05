@@ -17,10 +17,10 @@ function LoginModal(props) {
 	         		Nickname:
 	            	<input type="text" name="username" value={props.cafe.username} onChange={props.handleChange} />
 	          	</label>
-	          	<label className="modal-input-label">
+	          	{/* <label className="modal-input-label">
 	            Cafe ID:
           			<input type="text" name="cafe_id" placeholder="Optional" value={props.cafe.cafe_id} onChange={props.handleChange} />
-	          	</label>
+	          	</label> */}
           		<input className={classNames("modal-button")} type="submit" value="Continue" align="middle"/>
 	        </form>
 	    </div>
