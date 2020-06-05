@@ -54,11 +54,13 @@ class CafeList extends Component {
 
   async getCafes() {
     const response = await fetch(`/api/cafe`);
+
+    console.log("Get Cafes response code", response.status)
     if (response.status !== 200) {
       throw Error;
     }
     const body = await response.json();
-    // console.log("cafes", body)
+    console.log("cafes", body)
     return body;
   };
 

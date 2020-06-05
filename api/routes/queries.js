@@ -1,5 +1,6 @@
 const { pool } = require('./../config')
 
+
 const getCafes = (request, response) => {
   pool.query('SELECT * FROM cafe ORDER BY id ASC', (error, results) => {
     if (error) {
