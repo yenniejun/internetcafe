@@ -89,6 +89,7 @@ Create table and insert values by running the script in `init.sql`.
 * Heroku
 * socket.io
 * PostgreSQL
+* Winston (logging)
 
 
 # Deployment

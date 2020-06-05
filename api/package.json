@@ -27,7 +27,8 @@
     "morgan": "~1.9.1",
     "pg": "7.4.3",
     "react-icons": "^3.9.0",
-    "socket.io": "^2.3.0"
+    "socket.io": "^2.3.0",
+    "winston": "^3.2.1"
   },
   "devDependencies": {
     "file-loader": "^6.0.0",

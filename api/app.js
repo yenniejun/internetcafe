@@ -12,6 +12,7 @@ const compression = require('compression')
 const rateLimit = require('express-rate-limit')
 const { body, check } = require('express-validator')
 var cookie = require('cookie');
+const winston = require('winston');
 
 
 var app = express();
@@ -106,6 +107,12 @@ io.on('connection', (client) => {
 
   client.on('cafe_list', () => {
 
+    winston.log('info', 'Server websocket connection: cafe_list', {
+        roomsList: convertRoomsListFromSet(),
+        clientToNameMapping: clientToNameMapping,
+        socketId: client.id
+    })
+
     client.emit('capacity', {
         roomsList: convertRoomsListFromSet(),
         clientToNameMapping: clientToNameMapping,
@@ -114,19 +121,31 @@ io.on('connection', (client) => {
   })
 
   client.on('cafe_login_with_cafeid', (msg) => {
-    console.log('cafe_login_with_cafeid', roomsList)
+      winston.log('info', 'cafe_login_with_cafeid', {
+        roomsList: convertRoomsListFromSet(),
+        new_client_socket_id: client.id,
+        clientsInRoom: Object.values(clientToNameMapping),
+        msg: msg
+      })  
 
       numClients = roomsList[msg.cafeId] ? roomsList[msg.cafeId].size : 0
       client.emit('me_joined', {
         socketId: client.id,
         numClients: numClients,
-        clientsInRoom: Object.values(clientToNameMapping)
+        clientsInRoom: Object.values(clientToNameMapping),
+        msg: msg
       });
   })
 
   client.on('cafe_login', (msg) => {
+    winston.log('info', 'cafe_login', {
+      roomsList: convertRoomsListFromSet(),
+      client_socket_id: client.id,
+      clientsInRoom: Object.values(clientToNameMapping),
+      msg: msg
+    })  
+
     roomName = msg.cafe.id
-    console.log('cafe_login', roomName)
 
     if (!(roomName in roomsList)) {
       roomsList[roomName] = new Set()
@@ -141,6 +160,10 @@ io.on('connection', (client) => {
 
     // if capacity full
     if (numClients === capacity) {
+      winston.log('info', 'cafe_login', {
+        note: "Room capacity full"
+      })
+
       client.emit('roomfull', {
         message: 'Room Full',
         cafe: msg.cafe
@@ -148,7 +171,6 @@ io.on('connection', (client) => {
     }
     else {
       roomsList[roomName].add(client.id)
-
 
      // emit just for each client
       client.emit('me_joined', {
@@ -172,8 +194,14 @@ io.on('connection', (client) => {
 
   client.on('cafe_logout', (msg) => {
 
+    winston.log('info', 'cafe_logout', {
+      roomsList: convertRoomsListFromSet(),
+      client_socket_id: client.id,
+      clientsInRoom: Object.values(clientToNameMapping),
+      msg: msg
+    })  
+
     roomName = msg.cafe.id
-    console.log('cafe_logout', roomName)
 
     if (Object.keys(roomsList).length == 0) {
       console.log("TODO deal with this situation")
@@ -185,7 +213,14 @@ io.on('connection', (client) => {
     roomsList[roomName].delete(msg.socketId)
 
     delete clientToNameMapping[msg.socketId]
-    console.log("BLAH", msg.socketId, clientToNameMapping)
+
+    winston.log('info', 'cafe_logout_after_delete', {
+      client_socket_id: client.id,
+      clientsInRoom: Object.values(clientToNameMapping),
+      numClients: roomsList[roomName].size,
+      clientsInRoom: JSON.stringify(Object.values(clientToNameMapping)),
+      roomsList: convertRoomsListFromSet()
+    })  
 
     io.sockets.emit('leaving', {
       socketId: client.id,
@@ -204,6 +239,12 @@ io.on('connection', (client) => {
   });
 
   client.on("disconnect", () => {
+    winston.log('info', 'disconnect', {
+      client_socket_id: client.id,
+      clientsInRoom: JSON.stringify(Object.values(clientToNameMapping)),
+      roomsList: convertRoomsListFromSet()
+    })  
+
     console.log("Client disconnected")
 
     for (var key in roomsList) {
@@ -220,8 +261,6 @@ io.on('connection', (client) => {
             clientName: clientName,
             clientsInRoom: JSON.stringify(Object.values(clientToNameMapping)),
           });  
-
-
       }
     }
   });
