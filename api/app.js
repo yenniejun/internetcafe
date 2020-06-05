@@ -121,6 +121,8 @@ io.on('connection', (client) => {
   })
 
   client.on('cafe_login_with_cafeid', (msg) => {
+    // TODO: This needs to look identical to cafe_login
+    
       winston.log('info', 'cafe_login_with_cafeid', {
         roomsList: convertRoomsListFromSet(),
         new_client_socket_id: client.id,
@@ -152,7 +154,12 @@ io.on('connection', (client) => {
     }
 
     console.log("Adding new clientid", client.id)
-    clientToNameMapping[client.id] = {username: msg.username, avatar: msg.avatar}
+    clientToNameMapping[client.id] = {
+      username: msg.username, 
+      avatar: msg.avatar,
+      roomname: msg.cafe.id
+    }
+
     capacity = msg.cafe.capacity
     numClients = roomsList[roomName].size
 

@@ -30,6 +30,7 @@ class Cafe extends Component {
       avatar: this.props.location.state.avatar,
       socketId: '',
       clientsInRoom: this.props.location.state.clientsInRoom ?? [],
+      roomsList: [],
       windowHeight:window.outerHeight,
       windowWidth:1440*window.outerHeight/1024,
       redirectHome: false
@@ -60,7 +61,8 @@ class Cafe extends Component {
 
     socket.on('joined', (emission) => {
       this.setState({ 
-        clientsInRoom: JSON.parse(emission.clientsInRoom)
+        clientsInRoom: JSON.parse(emission.clientsInRoom),
+        roomsList: emission.roomsList
       })
       // console.log("JOINEDD", this.state.clientsInRoom, "my name:", this.state.username)
     });
@@ -125,11 +127,16 @@ class Cafe extends Component {
   }
 
   getFriendsToRender = () => {
-    return this.state.clientsInRoom.filter(x => x.username !== this.state.username)
+    return this.state.clientsInRoom.filter(
+      x => 
+        x.username !== this.state.username && x.roomname === this.state.cafe.id
+      )
   }
 
   render() {
     document.body.classList.add('cafepage');
+
+    // console.log(this.state.roomsList, this.state.clientsInRoom)
 
     const friends = this.getFriendsToRender();
 
