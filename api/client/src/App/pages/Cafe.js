@@ -68,6 +68,8 @@ class Cafe extends Component {
     });
 
     socket.on('leaving', (emission) => {
+
+      console.log("Socket Leaving", emission)
       if (emission.clientName) {
         this.setState({ 
           clientsInRoom: JSON.parse(emission.clientsInRoom)
@@ -100,13 +102,6 @@ class Cafe extends Component {
     socket.off("leaving");
   }
 
-  send_socket = () => {
-    socket.emit('cafe_logout', { 
-      'cafe': this.state.cafe, 
-      'socketId': this.state.socketId,
-      'username': this.state.username
-    }) 
-  }
 
   /**
    * Calculate & Update state of new dimensions
@@ -123,13 +118,20 @@ class Cafe extends Component {
 
   handleLogout = () => {
     document.body.classList.remove('cafepage'); 
-    this.send_socket()
+    socket.emit('cafe_logout', { 
+      'cafe': this.state.cafe, 
+      'socketId': this.state.socketId,
+      'username': this.state.username,
+      'avatar:': this.state.avatar
+    }) 
   }
 
   getFriendsToRender = () => {
     return this.state.clientsInRoom.filter(
       x => 
-        x.username !== this.state.username && x.roomname === this.state.cafe.id
+        x.username !== this.state.username 
+        && x.roomname === this.state.cafe.id
+        && !!x.avatar
       )
   }
 
@@ -156,6 +158,7 @@ class Cafe extends Component {
             height={this.state.windowHeight}
             width={this.state.windowWidth}
             username={this.state.username}
+            avatar={this.state.avatar}
             handleLogout={this.handleLogout}
             clientsInRoom={this.state.clientsInRoom}
             cafe={this.state.cafe}
@@ -169,14 +172,14 @@ class Cafe extends Component {
             width={this.state.windowWidth}
             extra={[Plant1, Plant2, CounterPlant1]}
             food={[Donut1, Donut2, Cookiejar, Croissants1, Croissants2, Cupcakes]}
-            friends = {friends ? friends.slice(2,4) : null}
+            friends = {friends ? friends.slice(2,5) : null}
             // friends={["Meeple3", "Meeple4"]}
           />
           <CafeBackground 
             height={this.state.windowHeight}
             width={this.state.windowWidth}
             extra={[Plant1, Plant2, CounterPlant1]}
-            friends = {friends ? friends.slice(4,6) : null}
+            friends = {friends ? friends.slice(5,8) : null}
             // friends={["Meeple5", "Meeple6"]}
           />
           

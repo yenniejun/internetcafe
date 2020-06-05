@@ -122,7 +122,7 @@ io.on('connection', (client) => {
 
   client.on('cafe_login_with_cafeid', (msg) => {
     // TODO: This needs to look identical to cafe_login
-    
+
       winston.log('info', 'cafe_login_with_cafeid', {
         roomsList: convertRoomsListFromSet(),
         new_client_socket_id: client.id,
@@ -153,7 +153,7 @@ io.on('connection', (client) => {
       roomsList[roomName] = new Set()
     }
 
-    console.log("Adding new clientid", client.id)
+    console.log("Adding new clientid", client.id, "for room name: ", roomName)
     clientToNameMapping[client.id] = {
       username: msg.username, 
       avatar: msg.avatar,

@@ -2,6 +2,16 @@ import React, {Fragment} from 'react';
 import { Link } from 'react-router-dom';
 import {Meeple1, Meeple2, Meeple3, Meeple4, Meeple5, Meeple6}  from "./../components/cafe-elements/avatars"
 
+// Show two avatars if it's the main/first screen (the one with laptop)
+// Show three if it's every other screen
+function calculateAvatarTransformation(index, showTwo) {
+	if (showTwo) {
+		return index*800+200
+	} else {
+		return index*400+200
+	}
+}
+
 const CafeBackground = (props) => {
 
 	// console.log("Cafe Background", props.friends)
@@ -130,7 +140,8 @@ const CafeBackground = (props) => {
 			      	to={{
 			            pathname: './list',
 			            state: {
-			              username: props.username,
+						  username: props.username,
+						  avatar: props.avatar
 			            }
 			          }} 
 			          onClick={props.handleLogout}>
@@ -152,12 +163,12 @@ const CafeBackground = (props) => {
 					props.friends.map((item, index) => {
 						return (
 							<Fragment key={"avatar"+item['avatar'] + Math.random()}>
-							{item['avatar'] === "Meeple1" && <Meeple1 transform={index*800+200} username={item['username']}/>}
-							{item['avatar'] === "Meeple2" && <Meeple2 transform={index*800+200} username={item['username']}/>}
-							{item['avatar'] === "Meeple3" && <Meeple3 transform={index*800+200} username={item['username']}/>}
-							{item['avatar'] === "Meeple4" && <Meeple4 transform={index*800+200} username={item['username']}/>}
-							{item['avatar'] === "Meeple5" && <Meeple5 transform={index*800+200} username={item['username']}/>}
-							{item['avatar'] === "Meeple6" && <Meeple6 transform={index*800+200} username={item['username']}/>}
+							{item['avatar'] === "Meeple1" && <Meeple1 transform={calculateAvatarTransformation(index, !!props.cafe)} username={item['username']}/>}
+							{item['avatar'] === "Meeple2" && <Meeple2 transform={calculateAvatarTransformation(index, !!props.cafe)} username={item['username']}/>}
+							{item['avatar'] === "Meeple3" && <Meeple3 transform={calculateAvatarTransformation(index, !!props.cafe)} username={item['username']}/>}
+							{item['avatar'] === "Meeple4" && <Meeple4 transform={calculateAvatarTransformation(index, !!props.cafe)} username={item['username']}/>}
+							{item['avatar'] === "Meeple5" && <Meeple5 transform={calculateAvatarTransformation(index, !!props.cafe)} username={item['username']}/>}
+							{item['avatar'] === "Meeple6" && <Meeple6 transform={calculateAvatarTransformation(index, !!props.cafe)} username={item['username']}/>}
 							</Fragment>
 						)
 					}
