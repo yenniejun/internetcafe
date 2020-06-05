@@ -1,6 +1,7 @@
 import React, {Fragment} from 'react';
 import { Link } from 'react-router-dom';
 import {Meeple1, Meeple2, Meeple3, Meeple4, Meeple5, Meeple6}  from "./../components/cafe-elements/avatars"
+import {Laptop} from "./../components/cafe-elements/workmediums"
 
 // Show two avatars if it's the main/first screen (the one with laptop)
 // Show three if it's every other screen
@@ -13,9 +14,7 @@ function calculateAvatarTransformation(index, showTwo) {
 }
 
 const CafeBackground = (props) => {
-
 	// console.log("Cafe Background", props.friends)
-
   if (!props.width || !props.height) {
 	return null;
   }
@@ -174,6 +173,13 @@ const CafeBackground = (props) => {
 					}
 				)
 			}	
+
+			{!!props.work && props.work == "laptop" && 
+				<Laptop
+					message={"Welcome to " + props.cafe.cafename + ", " + props.username + "!"}
+				/>
+			}
+
 
 			</g>
 			<defs>

@@ -620,3 +620,10 @@ hr {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05), 0px 2px 4px rgba(0, 0, 0, 0.25);
   border-radius: 4px;
 }
+
+.laptopText {
+  font: 2rem sans-serif;
+  fill: black;
+  text-anchor: left;
+  font-family: "Open Sans";
+}

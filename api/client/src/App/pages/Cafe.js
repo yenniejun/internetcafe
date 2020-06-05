@@ -4,7 +4,6 @@ import socketIOClient from "socket.io-client";
 import CafeBackground from "./components/cafeBackground"
 import {Teacup} from "./components/cafe-elements/beverages"
 import {Plant1, Plant2, CounterPlant1} from "./components/cafe-elements/plants"
-import {Laptop} from "./components/cafe-elements/workmediums"
 import {CashRegister, EspressoMachine, ShelfMachines, ExtraCups} from "./components/cafe-elements/appliances"
 import {Donut1, Donut2, Cookiejar, Croissants1, Croissants2, Cupcakes} from "./components/cafe-elements/snacks"
 // import {ReactComponent as Meeple1} from "./../img/avatars/meeple1.svg"
@@ -163,7 +162,8 @@ class Cafe extends Component {
             clientsInRoom={this.state.clientsInRoom}
             cafe={this.state.cafe}
             behindLightbulb={[ShelfMachines]}
-            extra={[Teacup, Laptop, Plant1, Plant2, CounterPlant1, CashRegister, EspressoMachine, ExtraCups]}
+            extra={[Teacup, Plant1, Plant2, CounterPlant1, CashRegister, EspressoMachine, ExtraCups]}
+            work={"laptop"}
             friends = {friends ? friends.slice(0,2) : null}
             // friends={["Meeple1", "Meeple2"]}
           />
