@@ -19,7 +19,7 @@ function renderTableData(props) {
      } 
 
      return (
-        <tr key={id} onClick={() => props.onClickHandler(cafe, clientsInRoom)}>
+        <tr key={id} onClick={(event) => props.onClickHandler(cafe, clientsInRoom, event)}>
            <td>
               {(clientsInRoom.length == 0 || clientsInRoom.length < capacity)?
                   <CafeListPanel 

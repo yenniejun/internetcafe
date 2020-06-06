@@ -46,8 +46,26 @@ const createCafe = (request, response) => {
 }
 
 
+const deleteCafe = (request, response) => {
+  console.log("In DELETE CAFE query")
+
+  const id = parseInt(request.params.id);
+
+  pool.query('DELETE FROM cafe WHERE id = $1', [id], (error, result) => {
+    if (error) {
+      throw error
+    }
+    if (result.rowCount === 0) {
+    	response.status(404).json(id)
+    } else {
+    	response.status(202).json(result.rows)
+    }
+  })
+}
+
 module.exports = {
   getCafes,
   getCafeById,
-  createCafe
+  createCafe,
+  deleteCafe
 }

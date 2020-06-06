@@ -37,8 +37,25 @@ class CafeList extends Component {
 
   }
 
-  handleClick(cafe, clientsInRoom) {
-    // console.log(cafe)
+  handleClick(cafe, clientsInRoom, event) {
+    if (event.shiftKey) {
+      var answer = window.confirm("Delete cafe?")
+      if (answer) {
+          console.log("Deleting confirmation 1")
+          var answer2 = window.confirm("Are you super sure?")
+          if (answer2) {
+            console.log("Fine")
+            this.deleteCafe(cafe.id)
+              .then(() => this.getCafes())
+              .then(cafes => this.setState({cafes: cafes}))
+              .catch(err => this.setState({redirectHome: true}));
+          }
+      }
+      else {
+          console.log("Not deleting")
+          // Nothing happens
+      }
+    }
     this.setState({
       selectedCafe: cafe,
       selectecClientsInRoom: clientsInRoom,
@@ -51,6 +68,17 @@ class CafeList extends Component {
        showPopup: !this.state.showPopup  
     });  
    }  
+
+  async deleteCafe(id) {
+    const response = await fetch(`/api/cafe/${id}`, {
+      method: `DELETE`
+    });
+
+    console.log("Delete Cafe response code", response.status)
+    if (response.status !== 202) {
+      throw Error;
+    }
+  }
 
   async getCafes() {
     const response = await fetch(`/api/cafe`);
