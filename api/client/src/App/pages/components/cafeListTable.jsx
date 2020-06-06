@@ -6,20 +6,22 @@ import CafeListPanel from './cafeListPanel'
 
 function renderTableData(props) {
   console.log("Render table data", props)
-  return props.cafes.map((cafe, index) => {
+  return props.cafes && props.cafes.map((cafe, index) => {
      const { id, cafename, location, capacity } = cafe
      // const numClientsInRoom = props.cafeClientList[id]?.length ?? 0
 
      var clientsInRoom = []
-     for (var key in props.cafeClientList[id]) { 
-        var clientId = props.cafeClientList[id][key]
-        clientsInRoom.push(props.clientToNameMapping[clientId])
-     }
+     if (!!props.cafeClientList){
+        for (var key in props.cafeClientList[id]) { 
+          var clientId = props.cafeClientList[id][key]
+          clientsInRoom.push(props.clientToNameMapping[clientId])
+        }
+     } 
 
      return (
         <tr key={id} onClick={() => props.onClickHandler(cafe, clientsInRoom)}>
            <td>
-              {clientsInRoom.length < capacity ?
+              {(clientsInRoom.length == 0 || clientsInRoom.length < capacity)?
                   <CafeListPanel 
                     cafename={cafename}
                     location={location}
