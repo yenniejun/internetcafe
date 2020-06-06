@@ -56,11 +56,13 @@ class CafeList extends Component {
           // Nothing happens
       }
     }
-    this.setState({
-      selectedCafe: cafe,
-      selectecClientsInRoom: clientsInRoom,
-      showPopup: true 
-    })
+    else {
+      this.setState({
+        selectedCafe: cafe,
+        selectecClientsInRoom: clientsInRoom,
+        showPopup: true 
+      })
+    }
   }
 
   closePopup() {  
@@ -88,7 +90,7 @@ class CafeList extends Component {
       throw Error;
     }
     const body = await response.json();
-    console.log("cafes", body)
+    // console.log("cafes", body)
     return body;
   };
 

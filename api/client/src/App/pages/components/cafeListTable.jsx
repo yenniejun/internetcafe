@@ -5,7 +5,6 @@ import CafeListPanel from './cafeListPanel'
 
 
 function renderTableData(props) {
-  console.log("Render table data", props)
   return props.cafes && props.cafes.map((cafe, index) => {
      const { id, cafename, location, capacity } = cafe
      // const numClientsInRoom = props.cafeClientList[id]?.length ?? 0
